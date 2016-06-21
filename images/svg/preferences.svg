@@ -30,8 +30,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="376.53358"
-     inkscape:cy="193.59001"
+     inkscape:cx="197.53358"
+     inkscape:cy="191.59001"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -70,7 +70,10 @@
      transform="translate(0,-932.36218)">
     <g
        id="g3375"
-       transform="translate(-42,794)">
+       transform="translate(-42,794)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/images/preferences.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          id="g4497">
         <rect
