@@ -11,6 +11,7 @@ from pyqtconvert.search_box import Ui_SearchDialog
 from pyqtconvert.module_info import Ui_moduleDialog
 from pyqtconvert.preferences_dialog import Ui_PreferencesDialog
 from pyqtconvert.running_config import Ui_RunningConfigDialog
+from pyqtconvert.initial_config import Ui_InitialConfigDialog
 
 # Pybombs API imports
 from pybombs import config_manager
@@ -42,8 +43,8 @@ class ConfigDialog(QDialog,Ui_Dialog):
         self.wizard_dialogui = Ui_Dialog()
         self.wizard_dialogui.setupUi(self)
 
-
-
-
-
-
+class RunConfigDialog(QDialog, Ui_InitialConfigDialog):
+    def __init__(self):
+        super(RunConfigDialog, self).__init__()
+        self.runconfig_dialogui = Ui_InitialConfigDialog()
+        self.runconfig_dialogui.setupUi(self)

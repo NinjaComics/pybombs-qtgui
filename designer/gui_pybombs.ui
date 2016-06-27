@@ -22,7 +22,11 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTableView" name="tableView"/>
+     <widget class="QTableView" name="tableView">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -32,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>28</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -49,6 +53,7 @@
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="action_Apply"/>
+    <addaction name="action_Discard_Changes"/>
     <addaction name="action_Refresh"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -88,6 +93,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="action_Apply"/>
+   <addaction name="action_Discard_Changes"/>
    <addaction name="action_Refresh"/>
    <addaction name="separator"/>
    <addaction name="action_Preferences"/>
@@ -106,6 +112,9 @@
    </property>
   </action>
   <action name="action_Apply">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Apply Changes</string>
    </property>
@@ -156,6 +165,11 @@
   <action name="action_About_PyBOMBS">
    <property name="text">
     <string>&amp;About PyBOMBS</string>
+   </property>
+  </action>
+  <action name="action_Discard_Changes">
+   <property name="text">
+    <string>&amp;Discard Changes</string>
    </property>
   </action>
  </widget>
