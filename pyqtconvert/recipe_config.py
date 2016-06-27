@@ -1,0 +1,101 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'designer/recipe_config.ui'
+#
+# Created by: PyQt5 UI code generator 5.6
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_RecipeConfigDialog(object):
+    def setupUi(self, RecipeConfigDialog):
+        RecipeConfigDialog.setObjectName("RecipeConfigDialog")
+        RecipeConfigDialog.resize(640, 500)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(RecipeConfigDialog.sizePolicy().hasHeightForWidth())
+        RecipeConfigDialog.setSizePolicy(sizePolicy)
+        RecipeConfigDialog.setModal(True)
+        self.lineEdit = QtWidgets.QLineEdit(RecipeConfigDialog)
+        self.lineEdit.setGeometry(QtCore.QRect(30, 260, 221, 41))
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit_2 = QtWidgets.QLineEdit(RecipeConfigDialog)
+        self.lineEdit_2.setGeometry(QtCore.QRect(270, 260, 341, 41))
+        self.lineEdit_2.setText("")
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.label = QtWidgets.QLabel(RecipeConfigDialog)
+        self.label.setGeometry(QtCore.QRect(30, 230, 101, 20))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(RecipeConfigDialog)
+        self.label_2.setGeometry(QtCore.QRect(270, 230, 111, 20))
+        self.label_2.setObjectName("label_2")
+        self.tableWidget = QtWidgets.QTableWidget(RecipeConfigDialog)
+        self.tableWidget.setGeometry(QtCore.QRect(0, 0, 641, 211))
+        self.tableWidget.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.tableWidget.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setAlternatingRowColors(True)
+        self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget.setGridStyle(QtCore.Qt.NoPen)
+        self.tableWidget.setWordWrap(False)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        self.pushButton_2 = QtWidgets.QPushButton(RecipeConfigDialog)
+        self.pushButton_2.setEnabled(False)
+        self.pushButton_2.setGeometry(QtCore.QRect(480, 410, 131, 41))
+        self.pushButton_2.setCheckable(False)
+        self.pushButton_2.setDefault(True)
+        self.pushButton_2.setFlat(False)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.comboBox = QtWidgets.QComboBox(RecipeConfigDialog)
+        self.comboBox.setGeometry(QtCore.QRect(270, 350, 341, 41))
+        self.comboBox.setObjectName("comboBox")
+        self.label_3 = QtWidgets.QLabel(RecipeConfigDialog)
+        self.label_3.setGeometry(QtCore.QRect(40, 360, 211, 20))
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(RecipeConfigDialog)
+        self.label_4.setEnabled(True)
+        self.label_4.setGeometry(QtCore.QRect(0, 460, 641, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(255, 105, 5);")
+        self.label_4.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(RecipeConfigDialog)
+        self.label_5.setEnabled(True)
+        self.label_5.setGeometry(QtCore.QRect(0, 460, 641, 41))
+        self.label_5.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(239, 41, 41);")
+        self.label_5.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.label_5.setObjectName("label_5")
+
+        self.retranslateUi(RecipeConfigDialog)
+        QtCore.QMetaObject.connectSlotsByName(RecipeConfigDialog)
+
+    def retranslateUi(self, RecipeConfigDialog):
+        _translate = QtCore.QCoreApplication.translate
+        RecipeConfigDialog.setWindowTitle(_translate("RecipeConfigDialog", "Dialog"))
+        self.label.setText(_translate("RecipeConfigDialog", "Recipe Alias"))
+        self.label_2.setText(_translate("RecipeConfigDialog", "Recipe Location"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("RecipeConfigDialog", "Recipe Alias"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("RecipeConfigDialog", "Recipe Directory"))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("RecipeConfigDialog", "Recipe Source"))
+        self.pushButton_2.setText(_translate("RecipeConfigDialog", "Add recipe repo"))
+        self.label_3.setText(_translate("RecipeConfigDialog", "Select prefix to install recipes"))
+        self.label_4.setText(_translate("RecipeConfigDialog", "                                      Add new recipe locations and aliases here"))
+        self.label_5.setText(_translate("RecipeConfigDialog", "                    Ruh oh ! The recipe alias already exists, please choose a new alias"))
+
