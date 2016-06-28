@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>500</height>
+    <height>460</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,7 +26,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>260</y>
+     <y>270</y>
      <width>221</width>
      <height>41</height>
     </rect>
@@ -35,9 +35,9 @@
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>260</y>
-     <width>341</width>
+     <x>30</x>
+     <y>350</y>
+     <width>381</width>
      <height>41</height>
     </rect>
    </property>
@@ -49,7 +49,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>230</y>
+     <y>240</y>
      <width>101</width>
      <height>20</height>
     </rect>
@@ -61,8 +61,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>230</y>
+     <x>30</x>
+     <y>320</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -77,7 +77,7 @@
      <x>0</x>
      <y>0</y>
      <width>641</width>
-     <height>211</height>
+     <height>230</height>
     </rect>
    </property>
    <property name="contextMenuPolicy">
@@ -85,6 +85,9 @@
    </property>
    <property name="frameShadow">
     <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
@@ -95,11 +98,14 @@
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectRows</enum>
    </property>
+   <property name="showGrid">
+    <bool>false</bool>
+   </property>
    <property name="gridStyle">
     <enum>Qt::NoPen</enum>
    </property>
    <property name="wordWrap">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <column>
     <property name="text">
@@ -124,7 +130,7 @@
    <property name="geometry">
     <rect>
      <x>480</x>
-     <y>410</y>
+     <y>350</y>
      <width>131</width>
      <height>41</height>
     </rect>
@@ -142,29 +148,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>350</y>
-     <width>341</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>360</y>
-     <width>211</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Select prefix to install recipes</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="enabled">
     <bool>true</bool>
@@ -172,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>460</y>
+     <y>421</y>
      <width>641</width>
      <height>41</height>
     </rect>
@@ -190,30 +173,33 @@ background-color: rgb(255, 105, 5);</string>
     <set>Qt::ImhNone</set>
    </property>
    <property name="text">
-    <string>                                      Add new recipe locations and aliases here</string>
+    <string>Add new recipe locations and aliases</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
+  <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>460</y>
-     <width>641</width>
-     <height>41</height>
+     <y>440</y>
+     <width>642</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(239, 41, 41);</string>
+   <property name="value">
+    <number>24</number>
    </property>
-   <property name="inputMethodHints">
-    <set>Qt::ImhNone</set>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>290</y>
+     <width>131</width>
+     <height>26</height>
+    </rect>
    </property>
    <property name="text">
-    <string>                    Ruh oh ! The recipe alias already exists, please choose a new alias</string>
+    <string>Install to Prefix</string>
    </property>
   </widget>
  </widget>
