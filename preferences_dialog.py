@@ -12,3 +12,4 @@ class PreferencesDialog(QDialog, Ui_PreferencesDialog):
         self.preferences_dialogui = Ui_PreferencesDialog()
         self.preferences_dialogui.setupUi(self)
         self.preferences_dialogui.textBrowser.setFrameStyle(QFrame.NoFrame) 
+        self.preferences_dialogui.label_4.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)

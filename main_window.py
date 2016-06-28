@@ -15,6 +15,7 @@ from search_dialog import SearchDialog
 from module_info_dialog import ModuleInfo
 from preferences_dialog import PreferencesDialog
 from recipe_manager_dialog import RecipeConfigDialog
+from add_recipe_dialog import NewRecipeDialog
 
 # Pybombs API imports
 from pybombs import config_manager, package_manager, recipe_manager, recipe, install_manager
@@ -60,11 +61,12 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.config_window_popup) #About Pybombs dialog
-        self.ui.action_Preferences.triggered.connect(self.preferences_popup) #Pybombs preferences dialog   
+        self.ui.action_Prefix_Manager.triggered.connect(self.preferences_popup) #Pybombs preferences dialog   
         self.ui.action_Search.triggered.connect(self.search_box_popup) #Search Dialog box
         #self.ui.action_RunningConfig.triggered.connect(self.config_info_popup) #Displays running config
-        self.ui.action_RunningConfig.triggered.connect(self.recipe_manager_popup) #Recipe Manager 
+        self.ui.action_Recipe_Manager.triggered.connect(self.recipe_manager_popup) #Recipe Manager 
         self.ui.action_Apply.triggered.connect(self.apply_changes) #Install Manager stuff
+        self.ui.action_Add_Recipe.triggered.connect(self.add_recipes_popup) # Adds new recipe in .lwr format
         
     #Here's where we decorate the tableView and generate the source data for table
     def generate_table_data(self):
@@ -141,6 +143,11 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableView.customContextMenuRequested.connect(self.context_menu)
     
     #Methods for Dialogs and Wizard
+    def add_recipes_popup(self):
+        self.new_rec = NewRecipeDialog()
+        self.new_rec.setWindowTitle("About PyBOMBS")
+        self.new_rec.show()
+
     def config_window_popup(self):
         self.dialog = ConfigDialog()
         self.dialog.setWindowTitle("About PyBOMBS")

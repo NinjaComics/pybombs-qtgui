@@ -43,8 +43,10 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="action_Preferences"/>
+    <addaction name="action_Prefix_Manager"/>
+    <addaction name="action_Recipe_Manager"/>
     <addaction name="action_RunningConfig"/>
+    <addaction name="action_Add_Recipe"/>
    </widget>
    <widget class="QMenu" name="menuActions">
     <property name="title">
@@ -56,8 +58,6 @@
     <addaction name="action_Discard_Changes"/>
     <addaction name="action_Refresh"/>
     <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
     <addaction name="action_Search"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -66,7 +66,6 @@
     </property>
     <addaction name="action_About_PyBOMBS"/>
     <addaction name="action_About_GNU_Radio"/>
-    <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="action_About_CGRAN"/>
     <addaction name="separator"/>
@@ -96,7 +95,9 @@
    <addaction name="action_Discard_Changes"/>
    <addaction name="action_Refresh"/>
    <addaction name="separator"/>
-   <addaction name="action_Preferences"/>
+   <addaction name="action_Add_Recipe"/>
+   <addaction name="action_Prefix_Manager"/>
+   <addaction name="action_Recipe_Manager"/>
    <addaction name="separator"/>
    <addaction name="action_Search"/>
    <addaction name="separator"/>
@@ -144,14 +145,9 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionConfig_Preferences">
-   <property name="text">
-    <string>&amp;Config Preferences</string>
-   </property>
-  </action>
   <action name="action_Preferences">
    <property name="text">
-    <string>&amp;Preferences</string>
+    <string>&amp;Prefix Manager</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -170,6 +166,21 @@
   <action name="action_Discard_Changes">
    <property name="text">
     <string>&amp;Discard Changes</string>
+   </property>
+  </action>
+  <action name="action_Recipe_Manager">
+   <property name="text">
+    <string>&amp;Recipe Manager</string>
+   </property>
+  </action>
+  <action name="action_Prefix_Manager">
+   <property name="text">
+    <string>&amp;Prefix Manager</string>
+   </property>
+  </action>
+  <action name="action_Add_Recipe">
+   <property name="text">
+    <string>&amp;Add Recipe</string>
    </property>
   </action>
  </widget>
