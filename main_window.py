@@ -4,7 +4,7 @@ import os, sys, subprocess
 
 # PyQt API imports
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QMenu, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QMenu, QMessageBox, QComboBox
 from PyQt5.QtGui import QIcon, QPixmap, QPalette, QCursor, QColor
 from PyQt5.QtCore import QAbstractTableModel, Qt, QVariant
 
@@ -40,6 +40,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.install_material = []
         self.update_material = []
         self.remove_material = []
+
+        #Choose a prefix or use pybombs from within a default_prefix
+        self.prefix_chooser()
 
         #Our tableview and it's data. Yay ! 
         self.generate_table_data()    
@@ -142,6 +145,31 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         #TableView's ContextMenu that displays (Install/Update/Remove/Module Info) menu
         self.ui.tableView.customContextMenuRequested.connect(self.context_menu)
     
+    def prefix_chooser(self):
+        """Choose prefix from Status Bar
+        """
+        prefix_box = QComboBox(self.ui.statusbar)
+        #prefix_box.setGeometry(700, 439, 652,25) - This smh doesn't seem to be working :(
+        self.ui.statusbar.addPermanentWidget(prefix_box)
+
+        cfg = config_manager.config_manager
+        if len(cfg.get('default_prefix')) == 0:
+            self.ui.action_Prefix_Manager.triggered.connect(self.preferences_popup) #Pybombs preferences dialog
+        else:
+            prefix_box.addItem(cfg.get('default_prefix'))    
+            active_prefix = cfg.get_active_prefix()
+            prefix_list = list(active_prefix.prefix_aliases.keys())
+            prefix_list.remove(cfg.get('default_prefix'))
+            for prefix in prefix_list:
+                prefix_box.addItem(prefix)  
+        
+            current_prefix = prefix_box.currentText()
+            cfg_data = {'config': {'default_prefix': current_prefix}}
+            cfg_file = config_manager.config_manager.local_cfg
+            cfg.update_cfg_file(cfg_data, cfg_file)
+            prefix_msg = 'Active prefix - {}'.format(current_prefix)
+            self.ui.statusbar.showMessage(prefix_msg)
+
     #Methods for Dialogs and Wizard
     def add_recipes_popup(self):
         self.new_rec = NewRecipeDialog()

@@ -14,6 +14,7 @@ from pyqtconvert.recipe_config import Ui_RecipeConfigDialog
 from pybombs import commands, config_manager, recipe_manager
 from pybombs.pb_exception import PBException
 from pybombs.fetcher import Fetcher
+from pybombs.config_file import PBConfigFile
 
 class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
     def __init__(self):
@@ -151,6 +152,9 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
 
         if (action == update):
             self.update_recipe_repo(alias)
+ 
+        if (action == remove):
+            self.remove_recipe_dir(alias)
 
     def update_recipe_repo(self, alias):
         """
@@ -169,6 +173,42 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
             self.color_strips(update_msg, 'blue')
         return True
 
+    def remove_recipe_dir(self, alias):
+        """
+        Remove a recipe alias and, if applicable, its cache.
+        """
+        if not alias in self.cfg.get_named_recipe_dirs():
+            #self.log.error("Unknown recipe alias: {alias}".format(alias=alias))
+            remove_fail = 'Could not remove the recipe directory'
+            self.color_strips(remove_fail, 'red')
+            return False
+        # Remove from config file
+        cfg_filename = self.cfg.get_named_recipe_cfg_file(alias)
+        cfg_file = PBConfigFile(cfg_filename)
+        cfg_data = cfg_file.get()
+        cfg_data['recipes'].pop(alias, None)
+        cfg_file.save(cfg_data)
+        recipe_cache_dir = os.path.join(
+            os.path.split(cfg_filename)[0],
+            self.cfg.recipe_cache_dir,
+            alias,
+        )
+        # If the recipe cache is not inside a PyBOMBS dir, don't delete it.
+        if self.cfg.pybombs_dir not in recipe_cache_dir:
+            remove_success = 'Successfully removed the recipe directory'
+            self.color_strips(remove_success, 'blue')
+            return True
+        if os.path.exists(recipe_cache_dir):
+            #self.log.info("Removing directory: {cdir}".format(cdir=recipe_cache_dir))
+            shutil.rmtree(recipe_cache_dir)
+        remove_success = 'Successfully removed the recipe directory'
+        self.color_strips(remove_success, 'blue')
+        return True
+
+    def default_strip(self):
+        new_msg = "Add new recipe locations and aliases"
+        self.color_strips(new_msg, 'orange')
+
     def color_strips(self, msg, color):
         if (color == 'red'):
             self.recipeconfig_dialogui.label_4.setText(msg)
@@ -179,8 +219,4 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
         elif (color == 'orange'):
             self.recipeconfig_dialogui.label_4.setText(msg)
             self.recipeconfig_dialogui.label_4.setStyleSheet("QLabel{background-color:rgb(255, 105, 5); color:rgb(255, 255, 255);}")
-
-    def default_strip(self):
-        new_msg = "Add new recipe locations and aliases"
-        self.color_strips(new_msg, 'orange')
      
