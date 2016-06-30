@@ -12,6 +12,8 @@ class NewRecipeDialog(QDialog, Ui_NewRecipeDialog):
         self.newrecipe_dialogui = Ui_NewRecipeDialog()
         self.newrecipe_dialogui.setupUi(self)
         self.newrecipe_dialogui.pushButton.clicked.connect(self.open_filedlg)
+        self.newrecipe_dialogui.label_4.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+        self.newrecipe_dialogui.lineEdit.setPlaceholderText("Recipe file name")
 
     def open_filedlg(self):
         fdlg = QFileDialog()
