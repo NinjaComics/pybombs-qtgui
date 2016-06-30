@@ -45,8 +45,9 @@
     </property>
     <addaction name="action_Prefix_Manager"/>
     <addaction name="action_Recipe_Manager"/>
-    <addaction name="action_RunningConfig"/>
     <addaction name="action_Add_Recipe"/>
+    <addaction name="separator"/>
+    <addaction name="action_RunningConfig"/>
    </widget>
    <widget class="QMenu" name="menuActions">
     <property name="title">
@@ -59,6 +60,7 @@
     <addaction name="action_Refresh"/>
     <addaction name="separator"/>
     <addaction name="action_Search"/>
+    <addaction name="action_Choose_Prefix"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -95,7 +97,7 @@
    <addaction name="action_Discard_Changes"/>
    <addaction name="action_Refresh"/>
    <addaction name="separator"/>
-   <addaction name="action_Add_Recipe"/>
+   <addaction name="action_Choose_Prefix"/>
    <addaction name="action_Prefix_Manager"/>
    <addaction name="action_Recipe_Manager"/>
    <addaction name="separator"/>
@@ -181,6 +183,11 @@
   <action name="action_Add_Recipe">
    <property name="text">
     <string>&amp;Add Recipe</string>
+   </property>
+  </action>
+  <action name="action_Choose_Prefix">
+   <property name="text">
+    <string>&amp;Choose Prefix</string>
    </property>
   </action>
  </widget>

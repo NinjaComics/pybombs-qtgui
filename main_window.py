@@ -6,7 +6,7 @@ import os, sys, subprocess
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QMenu, QMessageBox, QComboBox
 from PyQt5.QtGui import QIcon, QPixmap, QPalette, QCursor, QColor
-from PyQt5.QtCore import QAbstractTableModel, Qt, QVariant
+from PyQt5.QtCore import QAbstractTableModel, Qt, QVariant, pyqtSlot
 
 # Import UI from designer generated python files
 from pyqtconvert.ui_convert import Ui_MainWindow
@@ -16,6 +16,7 @@ from module_info_dialog import ModuleInfo
 from preferences_dialog import PreferencesDialog
 from recipe_manager_dialog import RecipeConfigDialog
 from add_recipe_dialog import NewRecipeDialog
+from prefix_chooser_dialog import PrefixChooserDialog
 
 # Pybombs API imports
 from pybombs import config_manager, package_manager, recipe_manager, recipe, install_manager
@@ -40,28 +41,22 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.install_material = []
         self.update_material = []
         self.remove_material = []
-
-        #Choose a prefix or use pybombs from within a default_prefix
-        self.prefix_chooser()
-
-        #Our tableview and it's data. Yay ! 
-        self.generate_table_data()    
-        self.create_table()
+        
+        self.cfg = config_manager.config_manager
+        if len(self.cfg.get('default_prefix')) == 0:
+            self.prefix_config_wizard() #Pybombs preferences dialog
         
         #Searchbox in Toolbar
         self.ui.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.lineEdit = QtWidgets.QLineEdit(self)
         self.lineEdit.setPlaceholderText("Quick search")
         self.lineEdit.setFixedWidth(250)
-        self.ui.toolBar.addWidget(self.lineEdit)
+        self.ui.toolBar.addWidget(self.lineEdit)        
 
-        #Prefix Config Wizard Properties
-        #self.wizard = ConfigWizard()
-        #self.wizard.setWindowTitle("PyBOMBS Prefix Configuration") 
-        #self.wizard.setContentsMargins(0,0,0,0)
-        #self.wizard.setModal(True)
-        #self.wizard.show()      
-        
+        #Our tableview and it's data. Yay ! 
+        self.generate_table_data()    
+        self.create_table()
+
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.config_window_popup) #About Pybombs dialog
         self.ui.action_Prefix_Manager.triggered.connect(self.preferences_popup) #Pybombs preferences dialog   
@@ -70,6 +65,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.action_Recipe_Manager.triggered.connect(self.recipe_manager_popup) #Recipe Manager 
         self.ui.action_Apply.triggered.connect(self.apply_changes) #Install Manager stuff
         self.ui.action_Add_Recipe.triggered.connect(self.add_recipes_popup) # Adds new recipe in .lwr format
+        self.ui.action_Choose_Prefix.triggered.connect(self.prefix_chooser_popup) #Prefix Chooser
         
     #Here's where we decorate the tableView and generate the source data for table
     def generate_table_data(self):
@@ -144,33 +140,17 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
         #TableView's ContextMenu that displays (Install/Update/Remove/Module Info) menu
         self.ui.tableView.customContextMenuRequested.connect(self.context_menu)
-    
-    def prefix_chooser(self):
-        """Choose prefix from Status Bar
-        """
-        prefix_box = QComboBox(self.ui.statusbar)
-        #prefix_box.setGeometry(700, 439, 652,25) - This smh doesn't seem to be working :(
-        self.ui.statusbar.addPermanentWidget(prefix_box)
-
-        cfg = config_manager.config_manager
-        if len(cfg.get('default_prefix')) == 0:
-            self.ui.action_Prefix_Manager.triggered.connect(self.preferences_popup) #Pybombs preferences dialog
-        else:
-            prefix_box.addItem(cfg.get('default_prefix'))    
-            active_prefix = cfg.get_active_prefix()
-            prefix_list = list(active_prefix.prefix_aliases.keys())
-            prefix_list.remove(cfg.get('default_prefix'))
-            for prefix in prefix_list:
-                prefix_box.addItem(prefix)  
-        
-            current_prefix = prefix_box.currentText()
-            cfg_data = {'config': {'default_prefix': current_prefix}}
-            cfg_file = config_manager.config_manager.local_cfg
-            cfg.update_cfg_file(cfg_data, cfg_file)
-            prefix_msg = 'Active prefix - {}'.format(current_prefix)
-            self.ui.statusbar.showMessage(prefix_msg)
 
     #Methods for Dialogs and Wizard
+    def prefix_config_wizard(self):
+        #Prefix Config Wizard Properties
+        self.wizard = ConfigWizard()
+        self.wizard.setWindowTitle("PyBOMBS Prefix Configuration") 
+        self.wizard.setContentsMargins(0,0,0,0)
+        self.wizard.setModal(True)
+        self.wizard.show()
+        self.wizard.exec_()      
+
     def add_recipes_popup(self):
         self.new_rec = NewRecipeDialog()
         self.new_rec.setWindowTitle("About PyBOMBS")
@@ -194,6 +174,13 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.search_opt.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.search_opt.show()
     
+    def prefix_chooser_popup(self):
+        self.choose_prefix = PrefixChooserDialog()
+        self.choose_prefix.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
+        self.choose_prefix.show()
+        current_prefix = self.choose_prefix.current_prefix()
+        self.prefix_msg = 'Active Prefix - {}'.format(current_prefix)         
+
     def module_info_popup(self, package_name):
         self.module_dialog = ModuleInfo(package_name)
         self.module_dialog.setFixedSize(self.module_dialog.size())
