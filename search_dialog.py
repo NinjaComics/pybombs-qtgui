@@ -21,3 +21,7 @@ class SearchDialog(QDialog, Ui_SearchDialog):
         super(SearchDialog, self).__init__()
         self.search_dialogui = Ui_SearchDialog()
         self.search_dialogui.setupUi(self)
+        self.search_dialogui.pushButton_2.clicked.connect(self.search_feature)
+
+    def search_feature(self):
+        self.close()

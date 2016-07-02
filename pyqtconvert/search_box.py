@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'search_opt.ui'
+# Form implementation generated from reading ui file 'designer/search_opt.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -22,14 +22,13 @@ class Ui_SearchDialog(object):
         self.lineEdit = QtWidgets.QLineEdit(SearchDialog)
         self.lineEdit.setGeometry(QtCore.QRect(140, 30, 191, 41))
         self.lineEdit.setObjectName("lineEdit")
-        self.pushButton = QtWidgets.QPushButton(SearchDialog)
-        self.pushButton.setGeometry(QtCore.QRect(140, 197, 93, 41))
-        self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(SearchDialog)
         self.pushButton_2.setGeometry(QtCore.QRect(240, 197, 93, 41))
+        self.pushButton_2.setAutoFillBackground(False)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/circle3.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon)
+        self.pushButton_2.setFlat(False)
         self.pushButton_2.setObjectName("pushButton_2")
         self.comboBox = QtWidgets.QComboBox(SearchDialog)
         self.comboBox.setGeometry(QtCore.QRect(140, 120, 191, 41))
@@ -52,11 +51,10 @@ class Ui_SearchDialog(object):
         _translate = QtCore.QCoreApplication.translate
         SearchDialog.setWindowTitle(_translate("SearchDialog", "Dialog"))
         self.label.setText(_translate("SearchDialog", "Search "))
-        self.pushButton.setText(_translate("SearchDialog", "Cancel"))
         self.pushButton_2.setText(_translate("SearchDialog", "Search"))
         self.comboBox.setItemText(0, _translate("SearchDialog", "Name"))
-        self.comboBox.setItemText(1, _translate("SearchDialog", "Version"))
-        self.comboBox.setItemText(2, _translate("SearchDialog", "Description"))
-        self.comboBox.setItemText(3, _translate("SearchDialog", "Installed"))
+        self.comboBox.setItemText(1, _translate("SearchDialog", "Category"))
+        self.comboBox.setItemText(2, _translate("SearchDialog", "Status"))
+        self.comboBox.setItemText(3, _translate("SearchDialog", "Description"))
         self.label_2.setText(_translate("SearchDialog", "Look in:"))
 
