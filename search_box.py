@@ -5,12 +5,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QGridLayout,
 from PyQt5.QtGui import QIcon, QPixmap
 
 # Import UI from designer files
-from pyqtconvert.prefix_config import Ui_Wizard
-from pyqtconvert.wizard_help import Ui_Dialog 
-from pyqtconvert.search_box import Ui_SearchDialog
-from pyqtconvert.module_info import Ui_moduleDialog
-from pyqtconvert.preferences_dialog import Ui_PreferencesDialog
-from pyqtconvert.running_config import Ui_RunningConfigDialog
+from pyqtconvert.search_dialog import Ui_SearchDialog
 
 # Pybombs API imports
 from pybombs import config_manager

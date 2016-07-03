@@ -4,16 +4,16 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QDialog, QFrame)
 from PyQt5.QtGui import QIcon, QPixmap
 
 # Import UI from designer files
-from pyqtconvert.preferences_dialog import Ui_PreferencesDialog
+from pyqtconvert.prefix_manager_dialog import Ui_PrefixConfigDialog
 
 
-class PreferencesDialog(QDialog, Ui_PreferencesDialog):
+class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
     def __init__(self):
-        super(PreferencesDialog, self).__init__()
-        self.preferences_dialogui = Ui_PreferencesDialog()
-        self.preferences_dialogui.setupUi(self)
-        self.preferences_dialogui.textBrowser.setFrameStyle(QFrame.NoFrame) 
-        self.preferences_dialogui.label_4.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+        super(PrefixConfigDialog, self).__init__()
+        self.prefixconfig_dialogui = Ui_PrefixConfigDialog()
+        self.prefixconfig_dialogui.setupUi(self)
+        self.prefixconfig_dialogui.textBrowser.setFrameStyle(QFrame.NoFrame) 
+        self.prefixconfig_dialogui.label_4.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
 
     def prefix_init(self):
         """
