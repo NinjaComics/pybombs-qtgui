@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PreferencesDialog</class>
- <widget class="QDialog" name="PreferencesDialog">
+ <class>PrefixConfigDialog</class>
+ <widget class="QDialog" name="PrefixConfigDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>PyBOMBS App Store - Preferences</string>
+   <string>Prefix Manager</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -168,7 +168,7 @@ background-color: rgb(255, 105, 5);</string>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>PreferencesDialog</receiver>
+   <receiver>PrefixConfigDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -184,7 +184,7 @@ background-color: rgb(255, 105, 5);</string>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>PreferencesDialog</receiver>
+   <receiver>PrefixConfigDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

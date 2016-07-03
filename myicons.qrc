@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="noprefix">
+    <file>images/document-open.png</file>
     <file>images/pybombs_logo.png</file>
     <file>images/config.png</file>
     <file>images/preferences.png</file>

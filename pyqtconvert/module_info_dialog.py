@@ -8,19 +8,19 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_moduleDialog(object):
-    def setupUi(self, moduleDialog):
-        moduleDialog.setObjectName("moduleDialog")
-        moduleDialog.resize(445, 480)
+class Ui_ModuleInfoDialog(object):
+    def setupUi(self, ModuleInfoDialog):
+        ModuleInfoDialog.setObjectName("ModuleInfoDialog")
+        ModuleInfoDialog.resize(445, 480)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(moduleDialog.sizePolicy().hasHeightForWidth())
-        moduleDialog.setSizePolicy(sizePolicy)
-        moduleDialog.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.verticalLayout = QtWidgets.QVBoxLayout(moduleDialog)
+        sizePolicy.setHeightForWidth(ModuleInfoDialog.sizePolicy().hasHeightForWidth())
+        ModuleInfoDialog.setSizePolicy(sizePolicy)
+        ModuleInfoDialog.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.verticalLayout = QtWidgets.QVBoxLayout(ModuleInfoDialog)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.tabWidget = QtWidgets.QTabWidget(moduleDialog)
+        self.tabWidget = QtWidgets.QTabWidget(ModuleInfoDialog)
         self.tabWidget.setFocusPolicy(QtCore.Qt.TabFocus)
         self.tabWidget.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.tabWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -65,31 +65,31 @@ class Ui_moduleDialog(object):
         self.verticalLayout_2.addWidget(self.textEdit)
         self.tabWidget.addTab(self.tab, "")
         self.verticalLayout.addWidget(self.tabWidget)
-        self.label = QtWidgets.QLabel(moduleDialog)
+        self.label = QtWidgets.QLabel(ModuleInfoDialog)
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap(":/noprefix/images/protip.png"))
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
-        self.buttonBox = QtWidgets.QDialogButtonBox(moduleDialog)
+        self.buttonBox = QtWidgets.QDialogButtonBox(ModuleInfoDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(moduleDialog)
+        self.retranslateUi(ModuleInfoDialog)
         self.tabWidget.setCurrentIndex(0)
-        self.buttonBox.accepted.connect(moduleDialog.accept)
-        self.buttonBox.rejected.connect(moduleDialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(moduleDialog)
+        self.buttonBox.accepted.connect(ModuleInfoDialog.accept)
+        self.buttonBox.rejected.connect(ModuleInfoDialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(ModuleInfoDialog)
 
-    def retranslateUi(self, moduleDialog):
+    def retranslateUi(self, ModuleInfoDialog):
         _translate = QtCore.QCoreApplication.translate
-        moduleDialog.setWindowTitle(_translate("moduleDialog", "Module Info"))
-        self.textEdit.setHtml(_translate("moduleDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        ModuleInfoDialog.setWindowTitle(_translate("ModuleInfoDialog", "Module Info"))
+        self.textEdit.setHtml(_translate("ModuleInfoDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("moduleDialog", "Module Info"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("ModuleInfoDialog", "Module Info"))
 
 import myicons_rc
