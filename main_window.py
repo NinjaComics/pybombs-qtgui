@@ -10,6 +10,7 @@ from PyQt5.QtGui import QCursor
 
 # Pybombs API imports
 from pybombs import config_manager, package_manager, recipe_manager, recipe, install_manager
+from pybombs.recipe import Recipe
 
 # Import UI from designer generated python files
 from pyqtconvert.pybombs_main_window import Ui_MainWindow
@@ -36,6 +37,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.centralwidget.setContentsMargins(0, 0, 0, 0)
         self.ui.verticalLayout.setContentsMargins(0, 0, 0, 0)
 
+        #self.ui.tableWidget_2.setVisible(False)
         #creating an empty dictionary and few lists which later goes into install_manager.py
         #with full list of packages to install/update/remove
         self.final_packages = {}
@@ -56,7 +58,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
         #Our tableWidget and it's data. Yay !
         self.generate_table_data()
-        self.create_table()
+        self.create_app_table()
+        self.create_baseline_table()
+        self.create_sdk_table()
         #self.ui.tableWidget.setModel(self.table_model) #Apply our model to the tableWidget
 
         #It's all signals and slots !!!
@@ -74,48 +78,67 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def generate_table_data(self):
         """Generate data from Pybombs backend to feed to the Model
         """
-        self.tabledata = []
+        self.app_package_data = []
+        self.sdk_package_data = []
+        self.base_package_data = []
+        self.app_package_list = []
+        self.sdk_package_list = []
         self.pm = package_manager.PackageManager()
 
         list_recipes = sorted(list(recipe_manager.recipe_manager.list_all()))
 
-        for oot_module in list_recipes:
-            try:
-                rec = recipe.get_recipe(oot_module, target='package')
-                if rec.get_dict()['category'] == 'baseline':
-                    pass
-                else:
-                    if 'description' in rec.get_dict():
-                        if self.pm.installed(oot_module):
-                            self.tabledata.append([oot_module,
-                                                   rec.get_dict()['category'],
-                                                   'Installed',
-                                                   rec.get_dict()['description']])
-                        else:
-                            self.tabledata.append([oot_module,
-                                                   rec.get_dict()['category'],
-                                                   'Not Installed',
-                                                   rec.get_dict()['description']])
-                    else:
-                        if self.pm.installed(oot_module):
-                            self.tabledata.append([oot_module,
-                                                   rec.get_dict()['category'],
-                                                   'Installed',
-                                                   'No description available'])
-                        else:
-                            self.tabledata.append([oot_module,
-                                                   rec.get_dict()['category'],
-                                                   'Not Installed',
-                                                   'No description available'])
-            except:
-                rec = recipe.get_recipe(oot_module, target='prefix', fail_easy=True)
+        for pkg_name in list_recipes:
+            module = Recipe(recipe_manager.recipe_manager.get_recipe_filename(pkg_name))
+            if module.target == 'prefix':
+                self.sdk_package_list.append(pkg_name)
+            elif module.target == 'sdk':
+                self.sdk_package_list.append(pkg_name)
+            elif module.target == 'package':
+                self.app_package_list.append(pkg_name)
 
-    def create_table(self):
+        for pkg in self.sdk_package_list:
+            rec = Recipe(recipe_manager.recipe_manager.get_recipe_filename(pkg))
+            if rec.target == 'prefix':
+                self.sdk_package_data.append([pkg, 'Prefix Specific Packages'])
+            elif rec.target == 'sdk':
+                self.sdk_package_data.append([pkg, 'SDK Packages'])
+
+        for oot_module in self.app_package_list:
+            rec = recipe.get_recipe(oot_module, target='package', fail_easy=True)
+            if rec.category == 'baseline':
+                if self.pm.installed(oot_module):
+                    self.base_package_data.append([oot_module, 'Installed'])
+                else:
+                    self.base_package_data.append([oot_module, 'Not Installed'])
+            else:
+                if 'description' in rec.get_dict():
+                    if self.pm.installed(oot_module):
+                        self.app_package_data.append([oot_module,
+                                               rec.get_dict()['category'],
+                                               'Installed',
+                                               rec.get_dict()['description']])
+                    else:
+                        self.app_package_data.append([oot_module,
+                                               rec.get_dict()['category'],
+                                               'Not Installed',
+                                               rec.get_dict()['description']])
+                else:
+                    if self.pm.installed(oot_module):
+                        self.app_package_data.append([oot_module,
+                                               rec.get_dict()['category'],
+                                               'Installed',
+                                               'No description available'])
+                    else:
+                        self.app_package_data.append([oot_module,
+                                               rec.get_dict()['category'],
+                                               'Not Installed',
+                                               'No description available'])
+
+    def create_app_table(self):
         """tableWidget's stuff in here !
         """
         #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
         self.ui.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        #self.ui.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.ui.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.ui.tableWidget.verticalHeader().setVisible(False)
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
@@ -136,18 +159,79 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget.customContextMenuRequested.connect(self.context_menu)
 
         #set generated data to tableWidget
-        self.ui.tableWidget.setRowCount(len(self.tabledata))
+        self.ui.tableWidget.setRowCount(len(self.app_package_data))
 
         row = 0
-        for data in self.tabledata:
+        for data in self.app_package_data:
             for column in range(self.ui.tableWidget.columnCount()):
                 self.ui.tableWidget.setItem(row, column,
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
+    def create_sdk_table(self):
+        """tableWidget_2's stuff in here !
+        """
+        #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
+        self.ui.tableWidget_2.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
+                                                                    ResizeToContents)
+        self.ui.tableWidget_2.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
+        self.ui.tableWidget_2.horizontalHeader().setStyleSheet(
+            "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
+        self.ui.tableWidget_2.setAlternatingRowColors(True)
+        self.ui.tableWidget_2.setStyleSheet(
+            "QTableWidget {alternate-background-color: rgb(211, 215, 207);" \
+            "background-color: white;}")
+        self.ui.tableWidget_2.setStyleSheet(
+            "QTableWidget::item {border: 0px; padding-left: 10px;" \
+            "padding-right: 40px;}")
+
+        #tableWidget's ContextMenu that displays (Install/Update/Remove/Module Info) menu
+        self.ui.tableWidget_2.customContextMenuRequested.connect(self.context_menu)
+
+        #set generated data to tableWidget
+        self.ui.tableWidget_2.setRowCount(len(self.sdk_package_data))
+
+        row = 0
+        for data in self.sdk_package_data:
+            for column in range(self.ui.tableWidget_2.columnCount()):
+                self.ui.tableWidget_2.setItem(row, column,
+                                            QTableWidgetItem(str(data[column])))
+            row += 1
+
+    def create_baseline_table(self):
+        """tableWidget_3's stuff in here !
+        """
+        #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
+        self.ui.tableWidget_3.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
+                                                                    ResizeToContents)
+        self.ui.tableWidget_3.horizontalHeader().setStretchLastSection(True)
+        self.ui.tableWidget_3.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
+        self.ui.tableWidget_3.horizontalHeader().setStyleSheet(
+            "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
+        self.ui.tableWidget_3.setAlternatingRowColors(True)
+        self.ui.tableWidget_3.setStyleSheet(
+            "QTableWidget {alternate-background-color: rgb(211, 215, 207);" \
+            "background-color: white;}")
+        self.ui.tableWidget_3.setStyleSheet(
+            "QTableWidget::item {border: 0px; padding-left: 10px;" \
+            "padding-right: 40px;}")
+
+        #tableWidget's ContextMenu that displays (Install/Update/Remove/Module Info) menu
+        self.ui.tableWidget_3.customContextMenuRequested.connect(self.context_menu)
+
+        #set generated data to tableWidget
+        self.ui.tableWidget_3.setRowCount(len(self.base_package_data))
+
+        row = 0
+        for data in self.base_package_data:
+            for column in range(self.ui.tableWidget_3.columnCount()):
+                self.ui.tableWidget_3.setItem(row, column,
+                                            QTableWidgetItem(str(data[column])))
+            row += 1
+
     #Methods for Dialogs and Wizard
     def about_pybombs_popup(self):
-        self.about_pybombs =  AboutPybombsDialog()
+        self.about_pybombs = AboutPybombsDialog()
         self.about_pybombs.setWindowTitle("About Pybombs")
         self.about_pybombs.show()
 
@@ -186,7 +270,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.running_config.show()
 
     def quick_search_highlight(self):
-        search_items = self.ui.tableWidget.findItems(self.tb_lineEdit.text(),
+        search_items = self.ui.tableWidget.findItems(self.tb_line_edit.text(),
                                                      QtCore.Qt.MatchExactly)
         for item in search_items:
             self.ui.tableWidget.selectRow(item.row())
@@ -195,7 +279,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             self.ui.tableWidget.setStyleSheet(
                 "QTableWidget::item {border: 0px; padding-left: 10px;" \
                 "padding-right: 40px;}")
-            self.tb_lineEdit.clear()
+            self.tb_line_edit.clear()
 
     def context_menu(self):
         """Custom ContextMenu that helps us install/update/remove OOT Modules
@@ -259,6 +343,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             self.ui.action_Apply.setEnabled(True)
         else:
             self.ui.action_Apply.setEnabled(False)
+
+        if action == module_info:
+            pass
 
     def apply_changes(self):
         self.final_packages = {'install': self.install_material,

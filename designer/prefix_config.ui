@@ -7,50 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>560</width>
-    <height>480</height>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Prefix Manager</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>440</y>
-     <width>176</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>421</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Forcebuild following OOT Modules: (specific to this prefix)</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>170</y>
      <width>141</width>
      <height>41</height>
@@ -68,43 +34,17 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>190</x>
      <y>170</y>
      <width>301</width>
      <height>41</height>
     </rect>
    </property>
   </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>230</y>
-     <width>561</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textBrowser">
-   <property name="geometry">
-    <rect>
-     <x>5</x>
-     <y>281</y>
-     <width>551</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>190</x>
      <y>90</y>
      <width>301</width>
      <height>41</height>
@@ -117,7 +57,7 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>90</y>
      <width>141</width>
      <height>41</height>
@@ -160,42 +100,67 @@ background-color: rgb(255, 105, 5);</string>
     <string>Pro tip - Choose a prefix directory with write access</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>424</x>
+     <y>247</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Create Prefix</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>260</y>
+     <width>161</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Make default prefix</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>170</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="document-open">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>28</width>
+     <height>28</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="../myicons.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>PrefixConfigDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>PrefixConfigDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
