@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt
 
 #Pybombs imports
 from pybombs import config_manager, recipe
-from pybombs.utils import sysutils
+from pybombs.utils import sysutils, subproc
 
 # Import UI from designer files
 from pyqtconvert.prefix_manager_dialog import Ui_PrefixConfigDialog
@@ -21,6 +21,8 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
         self.prefixconfig_dialogui.setupUi(self)
         self.prefixconfig_dialogui.label_4.setAlignment(Qt.AlignCenter
                                                         | Qt.AlignVCenter)
+        self.prefix_alias = self.prefixconfig_dialogui.lineEdit.text()
+        self.prefix_path = self.prefixconfig_dialogui.lineEdit_2.text()
 
     def prefix_init(self):
         """
@@ -33,14 +35,14 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
         # Make sure the directory is writable
         path = op.abspath(op.normpath(self.prefix_path))
         if not sysutils.mkdir_writable(path):
-            pass
-            #Change Color strip
+            dir_msg = "Choose a prefix directory with write access"
+            self.color_strips(dir_msg, 'red')
 
         # Make sure that a pybombs directory doesn't already exist
         from pybombs import config_manager
         if op.exists(op.join(path, config_manager.PrefixInfo.prefix_conf_dir)):
-            pass
-            #Change Color Strip
+            dir_exists = "Prefix directory already exists. Choose a new one"
+            self.color_strips(dir_exists, 'red')
 
         # Add subdirs
         sysutils.require_subdirs(path,
@@ -67,8 +69,8 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
                                       {'default_prefix': new_default_prefix}})
 
         # Create virtualenv if so desired
-        if virtualenv:
-            self.log.info("Creating Python virtualenv in prefix...")
+        if self.prefix_manager_dialog.checkBox.isChecked():
+            #self.log.info("Creating Python virtualenv in prefix...")
             venv_args = ['virtualenv']
             venv_args.append(path)
             subproc.monitor_process(args=venv_args)
@@ -80,10 +82,28 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
             self.prefix = self.cfg.get_active_prefix()
 
     def register_alias(self):
-            if prefix_alias is not None:
+            if self.prefix_alias is not None:
                 if self.prefix is not None and \
-                        self.prefix.prefix_aliases.get(alias) is not None \
-                        and not confirm("Alias `{0}' already exists, overwrite?".format(alias)):
-                    self.log.warn('Aborting.')
-                    raise PBException("Could not create alias.")
-                self.cfg.update_cfg_file({'prefix_aliases': {self.args.alias: path}})
+                        self.prefix.prefix_aliases.get(self.prefix_alias) is not None:
+                    confirm_msg = "Alias `{0}' already exists, overwrite?".format(self.prefix_alias)
+                    self.color_strips(confirm_msg, 'red')
+                    self.prefixconfig_dialogui.pushButton.setText("Overwrite")
+                self.cfg.update_cfg_file({'prefix_aliases': {self.prefix_alias: path}})
+
+    def default_strip(self):
+        new_msg = "Pro tip - Choose a prefix directory with write access"
+        self.color_strips(new_msg, 'orange')
+
+    def color_strips(self, msg, color):
+        if color == 'red':
+            self.prefixconfig_dialogui.label_4.setText(msg)
+            self.prefixconfig_dialogui.label_4.setStyleSheet(
+                "QLabel{background-color:rgb(239, 41, 41); color:rgb(255, 255, 255);}")
+        elif color == 'blue':
+            self.prefixconfig_dialogui.label_4.setText(msg)
+            self.prefixconfig_dialogui.label_4.setStyleSheet(
+                "QLabel{background-color:rgb(52, 101, 164); color:rgb(255, 255, 255);}")
+        elif color == 'orange':
+            self.prefixconfig_dialogui.label_4.setText(msg)
+            self.prefixconfig_dialogui.label_4.setStyleSheet(
+                "QLabel{background-color:rgb(255, 105, 5); color:rgb(255, 255, 255);}")
