@@ -3,7 +3,7 @@ import os.path as op
 
 # PyQt API imports
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtWidgets import QDialog, QFrame
+from PyQt5.QtWidgets import QDialog, QFrame, QFileDialog
 from PyQt5.QtCore import Qt
 
 #Pybombs imports
@@ -23,6 +23,13 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
                                                         | Qt.AlignVCenter)
         self.prefix_alias = self.prefixconfig_dialogui.lineEdit.text()
         self.prefix_path = self.prefixconfig_dialogui.lineEdit_2.text()
+        self.prefixconfig_dialogui.pushButton_2.clicked.connect(self.get_fname)
+
+    def get_fname(self):
+        dirname = str(QFileDialog.getExistingDirectory(self, 'Choose target recipe' \
+                                                     'directory'))
+        if dirname:
+            self.prefixconfig_dialogui.lineEdit_2.setText(dirname)
 
     def prefix_init(self):
         """
