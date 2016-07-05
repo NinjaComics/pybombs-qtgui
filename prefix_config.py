@@ -88,6 +88,10 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
             self.cfg.load(select_prefix=path)
             self.prefix = self.cfg.get_active_prefix()
 
+        self.cfg.update_cfg_file({'prefix_aliases':{self.prefix_alias, self.prefix_path}},
+                                 self.cfg.local_cfg)
+        success_msg = 'Successfully created prefix in {}'.format(self.prefix_path)
+        self.color_strips(success_msg, 'blue')
         return True
 
     def check_alias(self):
