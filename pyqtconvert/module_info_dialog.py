@@ -54,15 +54,9 @@ class Ui_ModuleInfoDialog(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.tab)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.textEdit = QtWidgets.QTextEdit(self.tab)
-        self.textEdit.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.textEdit.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.textEdit.setStyleSheet("")
-        self.textEdit.setTabChangesFocus(True)
-        self.textEdit.setReadOnly(True)
-        self.textEdit.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
-        self.textEdit.setObjectName("textEdit")
-        self.verticalLayout_2.addWidget(self.textEdit)
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.tab)
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.verticalLayout_2.addWidget(self.plainTextEdit)
         self.tabWidget.addTab(self.tab, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.label = QtWidgets.QLabel(ModuleInfoDialog)
@@ -85,11 +79,6 @@ class Ui_ModuleInfoDialog(object):
     def retranslateUi(self, ModuleInfoDialog):
         _translate = QtCore.QCoreApplication.translate
         ModuleInfoDialog.setWindowTitle(_translate("ModuleInfoDialog", "Module Info"))
-        self.textEdit.setHtml(_translate("ModuleInfoDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("ModuleInfoDialog", "Module Info"))
 
 import myicons_rc

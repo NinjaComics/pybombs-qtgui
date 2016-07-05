@@ -9,7 +9,8 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 # Pybombs API imports
-from pybombs import config_manager, package_manager, recipe_manager, recipe, install_manager
+from pybombs import config_manager, package_manager, recipe_manager, recipe, \
+     install_manager, dep_manager
 from pybombs.recipe import Recipe
 
 # Import UI from designer generated python files
@@ -38,8 +39,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.verticalLayout.setContentsMargins(0, 0, 0, 0)
 
         #self.ui.tableWidget_2.setVisible(False)
-        #creating an empty dictionary and few lists which later goes into install_manager.py
-        #with full list of packages to install/update/remove
+        #creating an empty dictionary and few lists which later goes into
+        #install_manager.py with full list of packages to install/update/remove
         self.final_packages = {}
         self.install_material = []
         self.update_material = []
@@ -47,7 +48,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
         self.cfg = config_manager.config_manager
         if len(self.cfg.get('default_prefix')) == 0:
-            self.prefix_config_wizard() #Pybombs preferences dialog
+            self.prefix_config_popup() #Pybombs preferences dialog
 
         #Searchbox in Toolbar
         self.ui.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
@@ -61,7 +62,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.create_app_table()
         self.create_baseline_table()
         self.create_sdk_table()
-        #self.ui.tableWidget.setModel(self.table_model) #Apply our model to the tableWidget
 
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.about_pybombs_popup)
@@ -88,7 +88,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         list_recipes = sorted(list(recipe_manager.recipe_manager.list_all()))
 
         for pkg_name in list_recipes:
-            module = Recipe(recipe_manager.recipe_manager.get_recipe_filename(pkg_name))
+            module = Recipe(recipe_manager.recipe_manager.
+                            get_recipe_filename(pkg_name))
             if module.target == 'prefix':
                 self.sdk_package_list.append(pkg_name)
             elif module.target == 'sdk':
@@ -137,14 +138,11 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def create_app_table(self):
         """tableWidget's stuff in here !
         """
-        #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
         self.ui.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.ui.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.ui.tableWidget.verticalHeader().setVisible(False)
-        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
-                                                                    ResizeToContents)
-        self.ui.tableWidget.horizontalHeader().setStretchLastSection(True)
-        self.ui.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(
+            QtWidgets.QHeaderView.ResizeToContents)
+        self.ui.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
         self.ui.tableWidget.horizontalHeader().setStyleSheet(
             "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
         self.ui.tableWidget.setAlternatingRowColors(True)
@@ -155,7 +153,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             "QTableWidget::item {border: 0px; padding-left: 10px;" \
             "padding-right: 40px;}")
 
-        #tableWidget's ContextMenu that displays (Install/Update/Remove/Module Info) menu
+        #tableWidget's ContextMenu
         self.ui.tableWidget.customContextMenuRequested.connect(self.context_menu)
 
         #set generated data to tableWidget
@@ -171,10 +169,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def create_sdk_table(self):
         """tableWidget_2's stuff in here !
         """
-        #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
-        self.ui.tableWidget_2.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
-                                                                    ResizeToContents)
-        self.ui.tableWidget_2.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
+        self.ui.tableWidget_2.horizontalHeader().setSectionResizeMode(
+            QtWidgets.QHeaderView.ResizeToContents)
+        self.ui.tableWidget_2.setContextMenuPolicy(Qt.CustomContextMenu)
         self.ui.tableWidget_2.horizontalHeader().setStyleSheet(
             "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
         self.ui.tableWidget_2.setAlternatingRowColors(True)
@@ -184,9 +181,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget_2.setStyleSheet(
             "QTableWidget::item {border: 0px; padding-left: 10px;" \
             "padding-right: 40px;}")
-
-        #tableWidget's ContextMenu that displays (Install/Update/Remove/Module Info) menu
-        self.ui.tableWidget_2.customContextMenuRequested.connect(self.context_menu)
 
         #set generated data to tableWidget
         self.ui.tableWidget_2.setRowCount(len(self.sdk_package_data))
@@ -201,10 +195,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def create_baseline_table(self):
         """tableWidget_3's stuff in here !
         """
-        #QtableWidget Propertiesself.ui.tableWidget.setShowGrid(False)
-        self.ui.tableWidget_3.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.
-                                                                    ResizeToContents)
-        self.ui.tableWidget_3.horizontalHeader().setStretchLastSection(True)
+        self.ui.tableWidget_3.horizontalHeader().setSectionResizeMode(
+            QtWidgets.QHeaderView.ResizeToContents)
         self.ui.tableWidget_3.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
         self.ui.tableWidget_3.horizontalHeader().setStyleSheet(
             "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
@@ -216,8 +208,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             "QTableWidget::item {border: 0px; padding-left: 10px;" \
             "padding-right: 40px;}")
 
-        #tableWidget's ContextMenu that displays (Install/Update/Remove/Module Info) menu
-        self.ui.tableWidget_3.customContextMenuRequested.connect(self.context_menu)
+        #tableWidget_3's ContextMenu
+        #self.ui.tableWidget_3.customContextMenuRequested.connect(self.context_menu)
 
         #set generated data to tableWidget
         self.ui.tableWidget_3.setRowCount(len(self.base_package_data))
@@ -242,7 +234,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
     def prefix_config_popup(self):
         self.prefix_conf = PrefixConfigDialog()
-        self.prefix_conf.setWindowTitle("About Pybombs")
+        self.prefix_conf.setWindowTitle("Pybombs Prefix Manager")
         self.prefix_conf.show()
 
     def recipe_manager_popup(self):
@@ -262,7 +254,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
     def module_info_popup(self, package_name):
         self.module_info = ModuleInfoDialog(package_name)
-        self.module_info.setFixedSize(self.module_dialog.size())
+        self.module_info.setFixedSize(self.module_info.size())
         self.module_info.show()
 
     def running_config_popup(self):
@@ -271,7 +263,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
     def quick_search_highlight(self):
         search_items = self.ui.tableWidget.findItems(self.tb_line_edit.text(),
-                                                     QtCore.Qt.MatchExactly)
+                                                     QtCore.Qt.MatchContains)
         for item in search_items:
             self.ui.tableWidget.selectRow(item.row())
             self.ui.tableWidget.setStyleSheet(
@@ -296,9 +288,12 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         install = menu.addAction("&Mark Install")
         update = menu.addAction("&Mark Update")
         remove = menu.addAction("&Mark Remove")
-        menu.addSeparator()
         discard = menu.addAction("&Discard Changes")
+        menu.addSeparator()
         module_info = menu.addAction("&Module Info")
+
+        discard.setEnabled(False)
+
         if self.pm.installed(package_name):
             install.setEnabled(False)
         else:
@@ -306,28 +301,28 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             remove.setEnabled(False)
 
         if package_name in self.install_material:
+            install.setEnabled(False)
             discard.setEnabled(True)
-        elif package_name in self.update_material:
+
+        if package_name in self.update_material:
+            update.setEnabled(False)
             discard.setEnabled(True)
-        elif package_name in self.remove_material:
+
+        if package_name in self.remove_material:
+            remove.setEnabled(False)
             discard.setEnabled(True)
-        else:
-            discard.setEnabled(False)
 
         action = menu.exec_(QCursor.pos())
 
         #Here's where our context menu gets some work to do
         if action == install:
             self.install_material.append(package_name)
-            print('{} = self.install_material'.format(self.install_material))
 
         if action == update:
             self.update_material.append(package_name)
-            print('{} = self.update_material'.format(self.update_material))
 
         if action == remove:
             self.remove_material.append(package_name)
-            print('{} = self.remove_material'.format(self.remove_material))
 
         if action == discard:
             if package_name in self.install_material:
@@ -339,13 +334,13 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             if package_name in self.remove_material:
                 self.remove_material.remove(package_name)
 
-        if self.install_material and self.update_material and self.remove_material == []:
+        if (self.install_material or self.update_material or self.remove_material):
             self.ui.action_Apply.setEnabled(True)
         else:
             self.ui.action_Apply.setEnabled(False)
 
         if action == module_info:
-            pass
+            self.module_info_popup(package_name)
 
     def apply_changes(self):
         self.final_packages = {'install': self.install_material,
@@ -362,7 +357,18 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
                              'update', update_if_exists=True)
 
         if 'remove' in self.final_packages:
-            pass
+            dep_tree = dep_manager.DepManager().make_dep_tree(
+                self.final_packages.get('remove'),
+                lambda x: bool(x in self.final_packages.get('remove')))
+        ### Remove packages
+        for pkg in reversed(dep_tree.serialize()):
+            # Uninstall:
+            self.pm.uninstall(pkg)
+            # Remove entry from inventory:
+            self.log.debug("Removing package from inventory.")
+            self.inventory.remove(pkg)
+            self.inventory.save()
+
 
 def main():
     app = QApplication(sys.argv)

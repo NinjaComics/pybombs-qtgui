@@ -1,9 +1,8 @@
 #Python imports
-import os.path as op
+import os
 
 # PyQt API imports
-from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtWidgets import QDialog, QFrame, QFileDialog
+from PyQt5.QtWidgets import QDialog, QFileDialog
 from PyQt5.QtCore import Qt
 
 #Pybombs imports
@@ -19,37 +18,42 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
         super(PrefixConfigDialog, self).__init__()
         self.prefixconfig_dialogui = Ui_PrefixConfigDialog()
         self.prefixconfig_dialogui.setupUi(self)
+
+        self.cfg = config_manager.config_manager
+
         self.prefixconfig_dialogui.label_4.setAlignment(Qt.AlignCenter
                                                         | Qt.AlignVCenter)
+        self.prefixconfig_dialogui.lineEdit.setPlaceholderText('Prefix alias')
+        self.prefixconfig_dialogui.lineEdit_2.setPlaceholderText('Choose prefix directory')
         self.prefix_alias = self.prefixconfig_dialogui.lineEdit.text()
-        self.prefix_path = self.prefixconfig_dialogui.lineEdit_2.text()
-        self.prefixconfig_dialogui.pushButton_2.clicked.connect(self.get_fname)
-
-    def get_fname(self):
-        dirname = str(QFileDialog.getExistingDirectory(self, 'Choose target recipe' \
-                                                     'directory'))
-        if dirname:
-            self.prefixconfig_dialogui.lineEdit_2.setText(dirname)
+        self.prefixconfig_dialogui.lineEdit.editingFinished.connect(self.check_alias)
+        self.prefixconfig_dialogui.pushButton_2.clicked.connect(self.get_dirname)
+        self.prefixconfig_dialogui.pushButton.clicked.connect(self.prefix_init)
 
     def prefix_init(self):
         """
         pybombs prefix init
         """
-        # Go, go, go!
+        self.prefix_path = self.prefixconfig_dialogui.lineEdit_2.text()
+        print(self.prefix_alias, self.prefix_path)
+
+        # Check alias and prefix dir validity
         prefix_recipe = recipe.get_recipe('default_prefix', target='prefix',
-                                              fail_easy=True)
+                                          fail_easy=True)
 
         # Make sure the directory is writable
-        path = op.abspath(op.normpath(self.prefix_path))
+        path = os.path.abspath(os.path.normpath(self.prefix_path))
+
         if not sysutils.mkdir_writable(path):
             dir_msg = "Choose a prefix directory with write access"
             self.color_strips(dir_msg, 'red')
+            return False
 
         # Make sure that a pybombs directory doesn't already exist
-        from pybombs import config_manager
-        if op.exists(op.join(path, config_manager.PrefixInfo.prefix_conf_dir)):
+        if os.path.exists(os.path.join(path, config_manager.PrefixInfo.prefix_conf_dir)):
             dir_exists = "Prefix directory already exists. Choose a new one"
             self.color_strips(dir_exists, 'red')
+            return False
 
         # Add subdirs
         sysutils.require_subdirs(path,
@@ -62,21 +66,17 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
             sysutils.write_file_in_subdir(path, fname,
                                           prefix_recipe.var_replace_all(content))
 
-        # Register alias
-        if self.prefix_alias is not None:
-            self.register_alias()
-
         # If there is no default prefix, make this the default
         if len(self.cfg.get('default_prefix')) == 0:
             if self.prefix_alias is not None:
                 new_default_prefix = self.prefix_alias
             else:
-                new_default_prefix = prefix_path
+                new_default_prefix = self.prefix_path
             self.cfg.update_cfg_file({'config':
                                       {'default_prefix': new_default_prefix}})
 
         # Create virtualenv if so desired
-        if self.prefix_manager_dialog.checkBox.isChecked():
+        if self.prefixconfig_dialogui.checkBox.isChecked():
             #self.log.info("Creating Python virtualenv in prefix...")
             venv_args = ['virtualenv']
             venv_args.append(path)
@@ -88,14 +88,16 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
             self.cfg.load(select_prefix=path)
             self.prefix = self.cfg.get_active_prefix()
 
-    def register_alias(self):
-            if self.prefix_alias is not None:
-                if self.prefix is not None and \
-                        self.prefix.prefix_aliases.get(self.prefix_alias) is not None:
-                    confirm_msg = "Alias `{0}' already exists, overwrite?".format(self.prefix_alias)
-                    self.color_strips(confirm_msg, 'red')
-                    self.prefixconfig_dialogui.pushButton.setText("Overwrite")
-                self.cfg.update_cfg_file({'prefix_aliases': {self.prefix_alias: path}})
+        return True
+
+    def check_alias(self):
+        print(self.prefix_alias)
+        active_prefix = self.cfg.get_active_prefix()
+        if active_prefix is not None and \
+           active_prefix.prefix_aliases.get(self.prefix_alias) is not None:
+            overwrite_msg = 'Alias already exists, overwrite ?'
+            self.prefixconfig_dialogui.pushButton.setText('Overwrite Prefix')
+            self.color_strips(overwrite_msg, 'red')
 
     def default_strip(self):
         new_msg = "Pro tip - Choose a prefix directory with write access"
@@ -114,3 +116,9 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
             self.prefixconfig_dialogui.label_4.setText(msg)
             self.prefixconfig_dialogui.label_4.setStyleSheet(
                 "QLabel{background-color:rgb(255, 105, 5); color:rgb(255, 255, 255);}")
+
+    def get_dirname(self):
+        dirname = str(QFileDialog.getExistingDirectory(self,
+                                                       'Choose prefix directory'))
+        if dirname:
+            self.prefixconfig_dialogui.lineEdit_2.setText(dirname)
