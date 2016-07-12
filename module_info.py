@@ -23,11 +23,11 @@ class ModuleInfoDialog(QDialog, Ui_ModuleInfoDialog):
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText(pkg)
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText('Dependencies:')
         for item in rec.depends:
-            depends = '\t-{}'.format(item)
+            depends = '-{}'.format(item)
             self.moduleinfo_dialogui.plainTextEdit.appendPlainText(depends)
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText('Source')
-        source = '\t{}'.format(rec.get_dict()['source'])
-        self.moduleinfo_dialogui.plainTextEdit.appendPlainText(source[0])
+        source = '{}'.format(rec.get_dict()['source'])
+        self.moduleinfo_dialogui.plainTextEdit.appendPlainText(source)
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText('Category')
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText(rec.category)
         if 'description' in rec.get_dict():
@@ -36,7 +36,7 @@ class ModuleInfoDialog(QDialog, Ui_ModuleInfoDialog):
 
         if 'forcebuild' in rec.get_dict():
             self.moduleinfo_dialogui.plainTextEdit.appendPlainText('Forcebuild')
-            self.moduleinfo_dialogui.plainTextEdit.appendPlainText('\tTrue')
+            self.moduleinfo_dialogui.plainTextEdit.appendPlainText('True')
 
 
 

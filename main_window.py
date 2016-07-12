@@ -46,10 +46,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.update_material = []
         self.remove_material = []
 
-        self.cfg = config_manager.config_manager
-        if len(self.cfg.get('default_prefix')) == 0:
-            self.prefix_config_popup() #Pybombs preferences dialog
-
         #Searchbox in Toolbar
         self.ui.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.tb_line_edit = QtWidgets.QLineEdit(self)
@@ -59,6 +55,14 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
         #Our tableWidget and it's data. Yay !
         self.generate_table_data()
+
+        self.cfg = config_manager.config_manager
+        if len(self.cfg.get('default_prefix')) == 0:
+            self.prefix_config_popup() #Pybombs preferences dialog
+
+        if not self.app_package_data:
+            self.recipe_manager_popup() #Pybombs recipe manager
+
         self.create_app_table()
         self.create_baseline_table()
         self.create_sdk_table()
@@ -66,6 +70,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.about_pybombs_popup)
         self.ui.action_Prefix_Manager.triggered.connect(self.prefix_config_popup)
+
         self.ui.action_Search.triggered.connect(self.search_box_popup)
         self.ui.action_RunningConfig.triggered.connect(self.running_config_popup)
         self.ui.action_Recipe_Manager.triggered.connect(self.recipe_manager_popup)
@@ -235,6 +240,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def prefix_config_popup(self):
         self.prefix_conf = PrefixConfigDialog()
         self.prefix_conf.setWindowTitle("Pybombs Prefix Manager")
+        self.prefix_conf.setFixedSize(self.prefix_conf.size())
+        self.prefix_conf.setModal(True)
         self.prefix_conf.show()
 
     def recipe_manager_popup(self):
@@ -365,7 +372,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             # Uninstall:
             self.pm.uninstall(pkg)
             # Remove entry from inventory:
-            self.log.debug("Removing package from inventory.")
             self.inventory.remove(pkg)
             self.inventory.save()
 
