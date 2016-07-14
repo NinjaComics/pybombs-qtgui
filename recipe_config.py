@@ -34,7 +34,6 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
             QtWidgets.QAbstractItemView.SelectRows)
         self.recipeconfig_dialogui.tableWidget.setEditTriggers(
             QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.recipeconfig_dialogui.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.recipeconfig_dialogui.tableWidget.resizeColumnsToContents()
         self.recipeconfig_dialogui.tableWidget.verticalHeader().setVisible(False)
         self.recipeconfig_dialogui.tableWidget.setContextMenuPolicy(
@@ -161,12 +160,12 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
                                                   self.cfg.recipe_cache_dir)
 
         if not os.path.isdir(recipe_cache_top_level):
-            self.log.debug("Recipe cache dir does not exist, creating" \
-                           "{0}".format(recipe_cache_top_level))
+            #self.log.debug("Recipe cache dir does not exist, creating" \
+            #               "{0}".format(recipe_cache_top_level))
             os.mkdir(recipe_cache_top_level)
         recipe_cache = os.path.join(recipe_cache_top_level, self.recipe_alias)
-        self.log.debug("Storing new recipe location to" \
-                       "{cfg_file}".format(cfg_file=cfg_file))
+        #self.log.debug("Storing new recipe location to" \
+        #               "{cfg_file}".format(cfg_file=cfg_file))
 
         assert cfg_file is not None
         assert os.path.isdir(recipe_cache_top_level)
@@ -174,22 +173,22 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
         assert self.recipe_alias
         #Now make sure we don't already have a cache dir
         if os.path.isdir(recipe_cache):
-            self.log.warn("Cache dir {cdir} for remote recipe location" \
-                          "{alias} already exists! Deleting.".format(
-                              cdir=recipe_cache, alias=self.recipe_alias))
+            #self.log.warn("Cache dir {cdir} for remote recipe location" \
+            #              "{alias} already exists! Deleting.".format(
+            #                  cdir=recipe_cache, alias=self.recipe_alias))
             shutil.rmtree(recipe_cache)
 
         if not os.path.isdir(os.path.normpath(os.path.expanduser(self.recipe_uri))):
             #Let the fetcher download the location
-            self.log.debug("Fetching into directory: {0}/{1}".format(
-                recipe_cache_top_level, self.recipe_alias))
+            #self.log.debug("Fetching into directory: {0}/{1}".format(
+            #    recipe_cache_top_level, self.recipe_alias))
 
             try:
                 Fetcher().fetch_url(self.recipe_uri,
                                     recipe_cache_top_level,
                                     self.recipe_alias, {}) # No args
             except PBException as ex:
-                self.log.error("Could not fetch recipes: {s}".format(str(ex)))
+                #self.log.error("Could not fetch recipes: {s}".format(str(ex)))
                 fetch_err_msg = 'Oops ! Could not fetch the recipes'
                 self.color_strips(fetch_err_msg, 'red')
                 return False

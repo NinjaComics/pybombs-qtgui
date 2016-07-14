@@ -24,6 +24,11 @@ class Ui_AboutPybombsDialog(object):
         self.label_2.setGeometry(QtCore.QRect(190, 210, 301, 201))
         self.label_2.setWordWrap(True)
         self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.widget)
+        self.label_3.setGeometry(QtCore.QRect(-10, -30, 651, 221))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/noprefix/images/pybombs_logo.png"))
+        self.label_3.setObjectName("label_3")
 
         self.retranslateUi(AboutPybombsDialog)
         self.buttonBox.accepted.connect(AboutPybombsDialog.accept)
@@ -37,3 +42,4 @@ class Ui_AboutPybombsDialog(object):
 "\n"
 ""))
 
+import myicons_rc
