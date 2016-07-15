@@ -11,3 +11,6 @@ Dependencies:
 * Arch : 
  - qt5-base
  - python-pyqt5
+* Fedora :
+ - qt5-qtbase
+ - python-qt5
