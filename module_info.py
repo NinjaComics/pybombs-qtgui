@@ -18,7 +18,7 @@ class ModuleInfoDialog(QDialog, Ui_ModuleInfoDialog):
         self.moduleinfo_dialogui.plainTextEdit.clear()
 
         rec = recipe.get_recipe(package_name, target='package')
-
+        
         pkg = 'Package Name: {}'.format(package_name)
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText(pkg)
         self.moduleinfo_dialogui.plainTextEdit.appendPlainText('Dependencies:')

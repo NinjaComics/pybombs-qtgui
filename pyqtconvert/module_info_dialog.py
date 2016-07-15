@@ -18,36 +18,13 @@ class Ui_ModuleInfoDialog(object):
         sizePolicy.setHeightForWidth(ModuleInfoDialog.sizePolicy().hasHeightForWidth())
         ModuleInfoDialog.setSizePolicy(sizePolicy)
         ModuleInfoDialog.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.verticalLayout = QtWidgets.QVBoxLayout(ModuleInfoDialog)
-        self.verticalLayout.setObjectName("verticalLayout")
+        ModuleInfoDialog.setWindowTitle("")
         self.tabWidget = QtWidgets.QTabWidget(ModuleInfoDialog)
+        self.tabWidget.setGeometry(QtCore.QRect(9, 9, 431, 331))
         self.tabWidget.setFocusPolicy(QtCore.Qt.TabFocus)
         self.tabWidget.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.tabWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tabWidget.setAutoFillBackground(False)
-        self.tabWidget.setStyleSheet("QTabBar::tab{\n"
-"  min-width: 10ex;\n"
-"  padding: 2px;\n"
-"  margin-right: 20px;\n"
-"  margin-left: 10px;\n"
-"  padding-right: 20px;\n"
-"  padding-left: 20px;\n"
-"  padding-top: -4px;\n"
-"  focus{border:none;}\n"
-"}\n"
-"QTabBar::tab:selected {\n"
-"  border-bottom : 2.3px solid;\n"
-"  border-bottom-color: rgb(69, 140, 214);\n"
-"}\n"
-"\n"
-"QTabBar::tab:!selected {\n"
-"  border-bottom: 2.3px solid; /* make non-selected tabs look smaller */\n"
-"  border-bottom-color: rgb(135, 135, 134);   \n"
-"}\n"
-"\n"
-"QTabBar:tab:focus {\n"
-"  outline: none;\n"
-"}")
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -55,30 +32,27 @@ class Ui_ModuleInfoDialog(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.tab)
+        self.plainTextEdit.setReadOnly(True)
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.verticalLayout_2.addWidget(self.plainTextEdit)
         self.tabWidget.addTab(self.tab, "")
-        self.verticalLayout.addWidget(self.tabWidget)
         self.label = QtWidgets.QLabel(ModuleInfoDialog)
+        self.label.setGeometry(QtCore.QRect(9, 340, 427, 93))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap(":/noprefix/images/protip.png"))
         self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.buttonBox = QtWidgets.QDialogButtonBox(ModuleInfoDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.pushButton = QtWidgets.QPushButton(ModuleInfoDialog)
+        self.pushButton.setGeometry(QtCore.QRect(362, 440, 71, 32))
+        self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(ModuleInfoDialog)
         self.tabWidget.setCurrentIndex(0)
-        self.buttonBox.accepted.connect(ModuleInfoDialog.accept)
-        self.buttonBox.rejected.connect(ModuleInfoDialog.reject)
+        self.pushButton.clicked['bool'].connect(ModuleInfoDialog.close)
         QtCore.QMetaObject.connectSlotsByName(ModuleInfoDialog)
 
     def retranslateUi(self, ModuleInfoDialog):
         _translate = QtCore.QCoreApplication.translate
-        ModuleInfoDialog.setWindowTitle(_translate("ModuleInfoDialog", "Module Info"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("ModuleInfoDialog", "Module Info"))
+        self.pushButton.setText(_translate("ModuleInfoDialog", "Ok"))
 
 import myicons_rc

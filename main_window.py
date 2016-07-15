@@ -23,7 +23,6 @@ from recipe_config import RecipeConfigDialog
 from new_recipe import NewRecipeDialog
 from prefix_chooser import PrefixChooserDialog
 from running_config import RunningConfigDialog
-from progress_bar import ProgressDialog
 
 class GenericThread(QThread):
     def __init__(self, function, *args, **kwargs):
@@ -39,7 +38,7 @@ class GenericThread(QThread):
         self.function(*self.args, **self.kwargs)
         return
 
-class WorkerThread(QtCore.QThread):
+class AWorkerThread(QtCore.QThread):
     progress_tick = QtCore.pyqtSignal(int, name="package")
 
     def __init__(self, package_list):
@@ -191,14 +190,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         #tableWidget_3's ContextMenu
         #self.ui.tableWidget_3.customContextMenuRequested.connect(self.context_menu)
 
-
         #Our GenericThread performing the data collection and setting it to TableWidgets
-        # generic thread using signal
-        #self.ui.tableWidget.clear()
-        #self.ui.tableWidget_2.clear()
-        #self.ui.tableWidget_3.clear()
-        self.threadPool.append(GenericThread(self.generate_table_data))
-        self.threadPool[len(self.threadPool)-1].start()
+        self.populate_table()
 
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.about_pybombs_popup)
@@ -215,7 +208,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     #Here's where we generate the source data for tableWidget
     def generate_table_data(self):
         """Generate data from Pybombs backend to feed to the Model
-        """
+        """ 
         self.pm = package_manager.PackageManager()
 
         list_recipes = sorted(list(recipe_manager.recipe_manager.list_all()))
@@ -305,6 +298,10 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         if not self.app_package_data:
             self.recipe_manager_popup() #Pybombs recipe manager
 
+    #Threads and data processing
+    def populate_table(self):
+        self.threadPool.append(GenericThread(self.generate_table_data))
+        self.threadPool[len(self.threadPool)-1].start()
 
     #Methods for Dialogs and Wizard
     def about_pybombs_popup(self):
@@ -334,10 +331,10 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.search_box.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.search_box.show()
 
-    def progress_popup(self):
-        self.progress = ProgressDialog()
-        self.progress.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
-        self.progress.show()
+    #def progress_popup(self):
+    #    self.progress = ProgressDialog()
+    #    self.progress.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
+    #    self.progress.show()
 
     def prefix_chooser_popup(self):
         self.choose_prefix = PrefixChooserDialog()
@@ -347,6 +344,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def module_info_popup(self, package_name):
         self.module_info = ModuleInfoDialog(package_name)
         self.module_info.setFixedSize(self.module_info.size())
+        self.module_info.setWindowTitle(package_name)
         self.module_info.show()
 
     def running_config_popup(self):
@@ -439,11 +437,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
                                'update': self.update_material,
                                'remove': self.remove_material}
         print(self.final_packages.values(), self.final_packages.keys())
-        self.worker_thread = WorkerThread(self.final_packages)
+        self.worker_thread = AWorkerThread(self.final_packages)
         self.threadPool.append(self.worker_thread)
         self.threadPool[len(self.threadPool)-1].start()
-
-        self.worker_thread.progress_tick.connect(self.progress_popup.progress.progressBar.setValue)
 
         self.threadPool.append(GenericThread(self.generate_table_data))
         self.threadPool[len(self.threadPool)-1].start()
