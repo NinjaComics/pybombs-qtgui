@@ -2,14 +2,14 @@
 from PyQt5.QtWidgets import QDialog
 
 #Pybombs API imports
-from pybombs import config_manager, recipe 
+from pybombs import config_manager, recipe
 from pybombs.utils import sysutils
 
 # Import UI from designer files
 from pyqtconvert.prefix_chooser_dialog import Ui_PrefixChooserDialog
 
 class PrefixChooserDialog(QDialog, Ui_PrefixChooserDialog):
-    def __init__(self):
+    def __init__(self, parent=None):
         super(PrefixChooserDialog, self).__init__()
         self.prefixchooser_dialogui = Ui_PrefixChooserDialog()
         self.prefixchooser_dialogui.setupUi(self)

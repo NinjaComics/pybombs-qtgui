@@ -32,7 +32,7 @@ class Ui_PrefixChooserDialog(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_3 = QtWidgets.QLabel(PrefixChooserDialog)
-        self.label_3.setGeometry(QtCore.QRect(140, 20, 151, 20))
+        self.label_3.setGeometry(QtCore.QRect(140, 20, 151, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_3.setFont(font)
