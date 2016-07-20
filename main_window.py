@@ -4,7 +4,8 @@ import sys
 
 # PyQt API imports
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QTableWidgetItem,\
+     QDialog
 from PyQt5.QtCore import Qt, QThread
 from PyQt5.QtGui import QCursor
 
@@ -24,85 +25,11 @@ from new_recipe import NewRecipeDialog
 from prefix_chooser import PrefixChooserDialog
 from running_config import RunningConfigDialog
 
-class GenericThread(QThread):
-    def __init__(self, function, *args, **kwargs):
-        QThread.__init__(self)
-        self.function = function
-        self.args = args
-        self.kwargs = kwargs
-
-    def __del__(self):
-        self.wait()
-
-    def run(self):
-        self.function(*self.args, **self.kwargs)
-        return
-
-class AWorkerThread(QtCore.QThread):
-    progress_tick = QtCore.pyqtSignal(int, name="package")
-
-    def __init__(self, package_list):
-        QtCore.QThread.__init__(self)
-        self.package_list = package_list
-
-    def run(self):
-        instaman = install_manager.InstallManager()
-
-        if 'install' in self.package_list:
-            install_list = self.package_list.get('install')
-            print(install_list)
-            try:
-                for package in install_list:
-                    install = []
-                    install.append(package)
-                    instaman.install(install, 'install')
-                    install.remove(package)
-                    progress = (install_list.index(package)+1)/len(
-                        install_list)*100.0
-                    print(progress)
-                    self.progress_tick.emit(progress, package)
-            except:
-                pass
-
-        if 'update' in self.package_list:
-            update_list = self.package_list.get('update')
-            try:
-                for package in update_list:
-                    update = []
-                    update.append(package)
-                    instaman.install(self.package_list.get('update'),
-                                     'update', update_if_exists=True)
-                    update.remove(package)
-                    progress = (update_list.index(package)+1)/len(
-                        update_list)*100.0
-                    self.progress_tick.emit(progress, package)
-            except:
-                pass
-
-        if 'remove' in self.package_list:
-            try:
-                remove_list = self.package_list.get('remove')
-                pm = package_manager.PackageManager()
-                dep_tree = dep_manager.DepManager().make_dep_tree(
-                    self.package_list.get('remove'),
-                    lambda x: bool(x in self.package_list.get('remove')))
-                remove = reversed(dep_tree.serialize())
-                ### Remove packages
-                for pkg in remove:
-                    print(pkg)
-                    #Uninstall:
-                    pm.uninstall(pkg)
-                    progress = (remove_list.index(pkg)+1)/len(remove_list)*100.0
-                    print(progress)
-                    #Remove entry from inventory:
-                    self.inventory.remove(pkg)
-                    self.inventory.save()
-            except:
-                pass
-        return
+#Import thread classes
+from pb_threadpool import AWorkerThread, GenericThread
 
 class PybombsMainWindow(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, parent=None):
         """Pybombs GUI MainWindow
         """
         super(PybombsMainWindow, self).__init__()
@@ -122,13 +49,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.install_material = []
         self.update_material = []
         self.remove_material = []
-
-        #Init lists used for generating data for tableWidgets
-        self.app_package_data = []
-        self.sdk_package_data = []
-        self.base_package_data = []
-        self.app_package_list = []
-        self.sdk_package_list = []
 
         #List that holds our threads
         self.threadPool = []
@@ -205,61 +125,21 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.action_Choose_Prefix.triggered.connect(self.prefix_chooser_popup)
         self.tb_line_edit.returnPressed.connect(self.quick_search_highlight)
 
+        self.data_thread = AWorkerThread()
+        self.data_thread.data_generate.connect(self.updateProgress)
+        self.thread.finished.connect(self.close)
+        self.thread.start()
+
+    def updateProgress(self, value, total):
+        self.ui.label_3.setText('{} of {} completed'.format(value, total))
+        self.ui.progressBar.setValue(value)
+
+
     #Here's where we generate the source data for tableWidget
     def generate_table_data(self):
         """Generate data from Pybombs backend to feed to the Model
-        """ 
-        self.pm = package_manager.PackageManager()
+        """
 
-        list_recipes = sorted(list(recipe_manager.recipe_manager.list_all()))
-
-        for pkg_name in list_recipes:
-            module = Recipe(recipe_manager.recipe_manager.
-                            get_recipe_filename(pkg_name))
-            if module.target == 'prefix':
-                self.sdk_package_list.append(pkg_name)
-            elif module.target == 'sdk':
-                self.sdk_package_list.append(pkg_name)
-            elif module.target == 'package':
-                self.app_package_list.append(pkg_name)
-
-        for pkg in self.sdk_package_list:
-            rec = Recipe(recipe_manager.recipe_manager.get_recipe_filename(pkg))
-            if rec.target == 'prefix':
-                self.sdk_package_data.append([pkg, 'Prefix Specific Packages'])
-            elif rec.target == 'sdk':
-                self.sdk_package_data.append([pkg, 'SDK Packages'])
-
-        for oot_module in self.app_package_list:
-            rec = recipe.get_recipe(oot_module, target='package', fail_easy=True)
-            if rec.category == 'baseline':
-                if self.pm.installed(oot_module):
-                    self.base_package_data.append([oot_module, 'Installed'])
-                else:
-                    self.base_package_data.append([oot_module, 'Not Installed'])
-            else:
-                if 'description' in rec.get_dict():
-                    if self.pm.installed(oot_module):
-                        self.app_package_data.append([oot_module,
-                                               rec.get_dict()['category'],
-                                               'Installed',
-                                               rec.get_dict()['description']])
-                    else:
-                        self.app_package_data.append([oot_module,
-                                               rec.get_dict()['category'],
-                                               'Not Installed',
-                                               rec.get_dict()['description']])
-                else:
-                    if self.pm.installed(oot_module):
-                        self.app_package_data.append([oot_module,
-                                               rec.get_dict()['category'],
-                                               'Installed',
-                                               'No description available'])
-                    else:
-                        self.app_package_data.append([oot_module,
-                                               rec.get_dict()['category'],
-                                               'Not Installed',
-                                               'No description available'])
 
         #set generated data to tableWidget
         self.ui.tableWidget.setRowCount(len(self.app_package_data))
@@ -291,7 +171,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
-        self.cfg = config_manager.config_manager
         if len(self.cfg.get('default_prefix')) == 0:
             self.prefix_config_popup() #Pybombs preferences dialog
 
@@ -300,7 +179,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
     #Threads and data processing
     def populate_table(self):
-        self.threadPool.append(GenericThread(self.generate_table_data))
+        self.threadPool.append(DataGenerator())
         self.threadPool[len(self.threadPool)-1].start()
 
     #Methods for Dialogs and Wizard
@@ -331,15 +210,14 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.search_box.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.search_box.show()
 
-    #def progress_popup(self):
-    #    self.progress = ProgressDialog()
-    #    self.progress.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
-    #    self.progress.show()
-
     def prefix_chooser_popup(self):
+        self.ui.statusbar.clearMessage()
         self.choose_prefix = PrefixChooserDialog()
         self.choose_prefix.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.choose_prefix.show()
+        if self.choose_prefix.exec_() == QDialog.Accepted:
+            current_prefix = self.cfg.get('default_prefix')
+            self.ui.statusbar.showMessage("Active prefix: {}".format(current_prefix), 2000)
 
     def module_info_popup(self, package_name):
         self.module_info = ModuleInfoDialog(package_name)
@@ -440,10 +318,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.worker_thread = AWorkerThread(self.final_packages)
         self.threadPool.append(self.worker_thread)
         self.threadPool[len(self.threadPool)-1].start()
-
-        self.threadPool.append(GenericThread(self.generate_table_data))
-        self.threadPool[len(self.threadPool)-1].start()
-
 
 def main():
     app = QApplication(sys.argv)
