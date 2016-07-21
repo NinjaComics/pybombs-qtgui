@@ -11,7 +11,7 @@ from PyQt5.QtGui import QCursor
 
 # Pybombs API imports
 from pybombs import config_manager, package_manager, recipe_manager, recipe, \
-     install_manager, dep_manager
+     install_manager, dep_manager, pb_logging
 from pybombs.recipe import Recipe
 
 # Import UI from designer generated python files
@@ -26,7 +26,7 @@ from prefix_chooser import PrefixChooserDialog
 from running_config import RunningConfigDialog
 
 #Import thread classes
-from pb_threadpool import AWorkerThread, GenericThread
+from pb_threadpool import AWorkerThread, GenericThread, DataGenerator
 
 class PybombsMainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -38,6 +38,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.log = pb_logging.logger.getChild("PybombsMainWindow")
         #MainWindow Properties
         self.ui.centralwidget.setContentsMargins(0, 0, 0, 0)
         self.ui.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -59,56 +60,13 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.tb_line_edit.setPlaceholderText("Quick search")
         self.tb_line_edit.setFixedWidth(250)
         self.ui.toolBar.addWidget(self.tb_line_edit)
-
-        #TableWidget's Properties (Application Packages)
-        self.ui.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.ui.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(
-            QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.ui.tableWidget.horizontalHeader().setStyleSheet(
-            "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
-        self.ui.tableWidget.setAlternatingRowColors(True)
-        self.ui.tableWidget.setStyleSheet(
-            "QTableWidget {alternate-background-color: rgb(211, 215, 207);" \
-            "background-color: white;}")
-        self.ui.tableWidget.setStyleSheet(
-            "QTableWidget::item {border: 0px; padding-left: 10px;" \
-            "padding-right: 40px;}")
-
-        #TableWidget's ContextMenu
-        self.ui.tableWidget.customContextMenuRequested.connect(self.context_menu)
-
-        #TableWidget_2's Properties (Baseline Packages)
+                        QtWidgets.QHeaderView.ResizeToContents)
         self.ui.tableWidget_2.horizontalHeader().setSectionResizeMode(
-            QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.tableWidget_2.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.ui.tableWidget_2.horizontalHeader().setStyleSheet(
-            "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
-        self.ui.tableWidget_2.setAlternatingRowColors(True)
-        self.ui.tableWidget_2.setStyleSheet(
-            "QTableWidget {alternate-background-color: rgb(211, 215, 207);" \
-            "background-color: white;}")
-        self.ui.tableWidget_2.setStyleSheet(
-            "QTableWidget::item {border: 0px; padding-left: 10px;" \
-            "padding-right: 40px;}")
-
-        #TableWidget_3's Properties (SDK and Prefix specific Packages)
+                        QtWidgets.QHeaderView.ResizeToContents)
         self.ui.tableWidget_3.horizontalHeader().setSectionResizeMode(
-            QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.tableWidget_3.setContextMenuPolicy(Qt.CustomContextMenu) #Custom context menu
-        self.ui.tableWidget_3.horizontalHeader().setStyleSheet(
-            "QHeaderView {font: bold; color:gray; border: 0px; padding: 0px;}")
-        self.ui.tableWidget_3.setAlternatingRowColors(True)
-        self.ui.tableWidget_3.setStyleSheet(
-            "QTableWidget {alternate-background-color: rgb(211, 215, 207);" \
-            "background-color: white;}")
-        self.ui.tableWidget_3.setStyleSheet(
-            "QTableWidget::item {border: 0px; padding-left: 10px;" \
-            "padding-right: 40px;}")
-
-        #tableWidget_3's ContextMenu
-        #self.ui.tableWidget_3.customContextMenuRequested.connect(self.context_menu)
+                        QtWidgets.QHeaderView.ResizeToContents)
+        self.ui.widget_3.hide()
 
         #Our GenericThread performing the data collection and setting it to TableWidgets
         self.populate_table()
@@ -125,62 +83,63 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.action_Choose_Prefix.triggered.connect(self.prefix_chooser_popup)
         self.tb_line_edit.returnPressed.connect(self.quick_search_highlight)
 
-        self.data_thread = AWorkerThread()
-        self.data_thread.data_generate.connect(self.updateProgress)
-        self.thread.finished.connect(self.close)
-        self.thread.start()
+        #tableWidget's ContextMenu
+        self.ui.tableWidget.customContextMenuRequested.connect(
+            self.context_menu_apps)
 
-    def updateProgress(self, value, total):
-        self.ui.label_3.setText('{} of {} completed'.format(value, total))
-        self.ui.progressBar.setValue(value)
+        #tableWidget_2's ContextMenu
+        #self.ui.tableWidget_2.customContextMenuRequested.connect(
+        #    self.context_menu_baseline)
 
+        #tableWidget_3's ContextMenu
+        #self.ui.tableWidget_3.customContextMenuRequested.connect(
+        #    self.context_menu_sdk)
 
-    #Here's where we generate the source data for tableWidget
-    def generate_table_data(self):
-        """Generate data from Pybombs backend to feed to the Model
+    def populate_table(self):
+        self.ui.tableWidget.setRowCount(0)
+        self.ui.tableWidget_2.setRowCount(0)
+        self.ui.tableWidget_3.setRowCount(0)
+        self.generate_data = DataGenerator()
+        self.threadPool.append(self.generate_data)
+        self.generate_data.data_generator.connect(self.create_table_widget)
+        self.threadPool[len(self.threadPool)-1].start()
+
+    def create_table_widget(self, app_packages, baseline_packages, sdk_packages):
+        """Creates table with the available packages
         """
-
-
         #set generated data to tableWidget
-        self.ui.tableWidget.setRowCount(len(self.app_package_data))
+        self.ui.tableWidget.setRowCount(len(app_packages))
 
         row = 0
-        for data in self.app_package_data:
+        for data in app_packages:
             for column in range(self.ui.tableWidget.columnCount()):
                 self.ui.tableWidget.setItem(row, column,
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
-        #set generated data to tableWidget
-        self.ui.tableWidget_2.setRowCount(len(self.sdk_package_data))
+        #set generated data to tableWidget_2
+        self.ui.tableWidget_2.setRowCount(len(sdk_packages))
 
         row = 0
-        for data in self.sdk_package_data:
+        for data in sdk_packages:
             for column in range(self.ui.tableWidget_2.columnCount()):
                 self.ui.tableWidget_2.setItem(row, column,
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
-        #set generated data to tableWidget
-        self.ui.tableWidget_3.setRowCount(len(self.base_package_data))
+        #set generated data to tableWidget_3
+        self.ui.tableWidget_3.setRowCount(len(baseline_packages))
 
         row = 0
-        for data in self.base_package_data:
+        for data in baseline_packages:
             for column in range(self.ui.tableWidget_3.columnCount()):
                 self.ui.tableWidget_3.setItem(row, column,
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
-        if len(self.cfg.get('default_prefix')) == 0:
-            self.prefix_config_popup() #Pybombs preferences dialog
-
-        if not self.app_package_data:
-            self.recipe_manager_popup() #Pybombs recipe manager
-
-    #Threads and data processing
-    def populate_table(self):
-        self.threadPool.append(DataGenerator())
-        self.threadPool[len(self.threadPool)-1].start()
+    def update_progress(self, value, total):
+        self.ui.label_3.setText('{} of {} completed'.format(value, total))
+        self.ui.progressBar.setValue(value)
 
     #Methods for Dialogs and Wizard
     def about_pybombs_popup(self):
@@ -241,10 +200,11 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
                 "padding-right: 40px;}")
             self.tb_line_edit.clear()
 
-    def context_menu(self):
+    def context_menu_apps(self):
         """Custom ContextMenu that helps us install/update/remove OOT Modules
            from the list displayed on tableWidget
         """
+        pm = package_manager.PackageManager()
         #Following three lines will return the package name irrespective of where
         #mouse click event happens on the row associated with the package
         indexes = self.ui.tableWidget.selectionModel().selectedRows()
@@ -262,7 +222,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
         discard.setEnabled(False)
 
-        if self.pm.installed(package_name):
+        if pm.installed(package_name):
             install.setEnabled(False)
         else:
             update.setEnabled(False)
@@ -311,12 +271,14 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             self.module_info_popup(package_name)
 
     def apply_changes(self):
+        self.ui.widget_3.show()
         self.final_packages = {'install': self.install_material,
                                'update': self.update_material,
                                'remove': self.remove_material}
-        print(self.final_packages.values(), self.final_packages.keys())
+        self.log.info('Final packages - {} {}'.format(self.final_packages.values(), self.final_packages.keys()))
         self.worker_thread = AWorkerThread(self.final_packages)
         self.threadPool.append(self.worker_thread)
+        self.worker_thread.progress_tick.connect(self.update_progress)
         self.threadPool[len(self.threadPool)-1].start()
 
 def main():

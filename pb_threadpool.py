@@ -7,6 +7,7 @@ from pybombs.recipe import Recipe
 #PyQt imports
 from PyQt5 import QtCore
 
+#A class to generate the data for the main window
 class DataGenerator(QtCore.QThread):
     data_generator = QtCore.pyqtSignal(list, list, list)
 
@@ -81,8 +82,10 @@ class DataGenerator(QtCore.QThread):
                                  sdk_package_data)
         return
 
+#A worker thread that takes care of install/update/remove tasks
 class AWorkerThread(QtCore.QThread):
-    progress_tick = QtCore.pyqtSignal(int, int)
+    progress_tick = QtCore.pyqtSignal(int, int, str)
+    error_info = QtCore.pyqtSignal(str)
 
     def __init__(self, package_list):
         QtCore.QThread.__init__(self)
@@ -95,27 +98,23 @@ class AWorkerThread(QtCore.QThread):
             install_list = self.package_list.get('install')
             try:
                 for package in install_list:
-                    #install = []
-                    #install.append(package)
                     instaman.install([package], 'install')
                     progress = (install_list.index(package)+1)/len(
                         install_list)*100.0
-                    self.progress_tick.emit(progress, len(install_list))
-            except:
-                pass
+                    self.progress_tick.emit(progress, len(install_list), 'install')
+            except Exception as ex:
+                self.error_info.emit(str(ex))
 
         if 'update' in self.package_list:
             update_list = self.package_list.get('update')
             try:
                 for package in update_list:
-                    #update = []
-                    #update.append(package)
                     instaman.install([package], 'update', update_if_exists=True)
                     progress = (update_list.index(package)+1)/len(
                         update_list)*100.0
-                    self.progress_tick.emit(progress, len(update_list))
-            except:
-                pass
+                    self.progress_tick.emit(progress, len(update_list), 'update')
+            except Exception as ex:
+                self.error_info.emit(str(ex))
 
         if 'remove' in self.package_list:
             try:
@@ -127,18 +126,18 @@ class AWorkerThread(QtCore.QThread):
                 remove = reversed(dep_tree.serialize())
                 ### Remove packages
                 for pkg in remove:
-                    print(pkg)
                     #Uninstall:
                     pm.uninstall(pkg)
                     progress = (remove_list.index(pkg)+1)/len(remove_list)*100.0
-                    self.progress_tick.emit(progress, len(remove_list))
+                    self.progress_tick.emit(progress, len(remove_list), 'remove')
                     #Remove entry from inventory:
                     self.inventory.remove(pkg)
                     self.inventory.save()
-            except:
-                pass
+            except Exception as ex:
+                self.error_info.emit(str(ex))
         return
 
+#Generic Thread for future use
 class GenericThread(QtCore.QThread):
     def __init__(self, function, *args, **kwargs):
         QtCore.QThread.__init__(self)
@@ -152,5 +151,3 @@ class GenericThread(QtCore.QThread):
     def run(self):
         self.function(*self.args, **self.kwargs)
         return
-
-
