@@ -137,10 +137,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
                                             QTableWidgetItem(str(data[column])))
             row += 1
 
-    def update_progress(self, value, total):
-        self.ui.label_3.setText('{} of {} completed'.format(value, total))
-        self.ui.progressBar.setValue(value)
-
     #Methods for Dialogs and Wizard
     def about_pybombs_popup(self):
         self.about_pybombs = AboutPybombsDialog()
@@ -210,7 +206,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         indexes = self.ui.tableWidget.selectionModel().selectedRows()
         for index in indexes:
             package_name = self.ui.tableWidget.model().index(index.row(), 0).data()
-
         #Our custom context menu
         menu = QMenu(self)
         install = menu.addAction("&Mark Install")
@@ -280,6 +275,14 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.threadPool.append(self.worker_thread)
         self.worker_thread.progress_tick.connect(self.update_progress)
         self.threadPool[len(self.threadPool)-1].start()
+        self.final_packages = {}
+        self.install_material = []
+        self.update_material = []
+        self.remove_material = []
+
+    def update_progress(self, value, total):
+        self.ui.label_3.setText('{} of {} completed'.format(value, total))
+        self.ui.progressBar.setValue(value)
 
 def main():
     app = QApplication(sys.argv)

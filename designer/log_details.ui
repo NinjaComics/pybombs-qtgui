@@ -15,47 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(7, 54, 66);
-color: rgb(255, 255, 255);</string>
-     </property>
-     <property name="undoRedoEnabled">
-      <bool>false</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Install tree:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;|&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;\- libperseus-sdr&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;PyBOMBS.install_manager - INFO - Installing package: libperseus-sdr&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cloning:     (100%) [===============================================================================================================================]&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Configuring: (100%) [===============================================================================================================================]&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Building:    (100%) [===============================================================================================================================]&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;make  all-am&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;make[1]: Entering directory '/home/ravi/checkout/prefixbox/gandalf/src/libperseus-sdr'&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;/bin/sh ./libtool  --tag=CC   --mode=link gcc -Wall -O3  -ffast-math -fopenmp  -march=native  -DGIT_REVISION=\&amp;quot;0.7.2.5-1a06\&amp;quot; -g -O2  -L/lib64 -L/usr/lib64 -o libperseus-sdr.la -rpath /home/ravi/checkout/prefixbox/gandalf/lib libperseus_sdr_la-perseus-sdr.lo libperseus_sdr_la-perseuserr.lo libperseus_sdr_la-perseusfx2.lo libperseus_sdr_la-perseus-in.lo libperseus_sdr_la-fpga_data.lo  -ldl -lusb-1.0 -lusb-1.0 -lpthread &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: gcc -shared  -fPIC -DPIC  .libs/libperseus_sdr_la-perseus-sdr.o .libs/libperseus_sdr_la-perseuserr.o .libs/libperseus_sdr_la-perseusfx2.o .libs/libperseus_sdr_la-perseus-in.o .libs/libperseus_sdr_la-fpga_data.o   -L/lib64 -L/usr/lib64 -ldl -lusb-1.0 -lpthread  -O3 -fopenmp -march=native -g -O2   -fopenmp -Wl,-soname -Wl,libperseus-sdr.so.0 -o .libs/libperseus-sdr.so.0.0.0&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: (cd &amp;quot;.libs&amp;quot; &amp;amp;&amp;amp; rm -f &amp;quot;libperseus-sdr.so.0&amp;quot; &amp;amp;&amp;amp; ln -s &amp;quot;libperseus-sdr.so.0.0.0&amp;quot; &amp;quot;libperseus-sdr.so.0&amp;quot;)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: (cd &amp;quot;.libs&amp;quot; &amp;amp;&amp;amp; rm -f &amp;quot;libperseus-sdr.so&amp;quot; &amp;amp;&amp;amp; ln -s &amp;quot;libperseus-sdr.so.0.0.0&amp;quot; &amp;quot;libperseus-sdr.so&amp;quot;)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: ar cru .libs/libperseus-sdr.a  libperseus_sdr_la-perseus-sdr.o libperseus_sdr_la-perseuserr.o libperseus_sdr_la-perseusfx2.o libperseus_sdr_la-perseus-in.o libperseus_sdr_la-fpga_data.o&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ar: `u' modifier ignored since `D' is the default (see `U')&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: ranlib .libs/libperseus-sdr.a&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: ( cd &amp;quot;.libs&amp;quot; &amp;amp;&amp;amp; rm -f &amp;quot;libperseus-sdr.la&amp;quot; &amp;amp;&amp;amp; ln -s &amp;quot;../libperseus-sdr.la&amp;quot; &amp;quot;libperseus-sdr.la&amp;quot; )&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;/bin/sh ./libtool  --tag=CC   --mode=link gcc -Wall -O3  -ffast-math -fopenmp  -march=native  -DGIT_REVISION=\&amp;quot;0.7.2.5-1a06\&amp;quot; -g -O2  -L/lib64 -L/usr/lib64 -o perseustest perseustest.o perseus-sdr.o perseuserr.o perseusfx2.o perseus-in.o fpga_data.o  -ldl -lusb-1.0 -lusb-1.0 -lpthread &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: gcc -Wall -O3 -ffast-math -fopenmp -march=native -DGIT_REVISION=\&amp;quot;0.7.2.5-1a06\&amp;quot; -g -O2 -o perseustest perseustest.o perseus-sdr.o perseuserr.o perseusfx2.o perseus-in.o fpga_data.o  -L/lib64 -L/usr/lib64 -ldl -lusb-1.0 -lpthread -fopenmp&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;/bin/sh ./libtool  --tag=CC   --mode=link gcc -Wall -O3  -ffast-math -fopenmp  -march=native  -DGIT_REVISION=\&amp;quot;0.7.2.5-1a06\&amp;quot; -g -O2  -L/lib64 -L/usr/lib64 -o perseustest_dyn perseustest.o -lperseus-sdr -ldl -lusb-1.0 -lusb-1.0 -lpthread &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;libtool: link: gcc -Wall -O3 -ffast-math -fopenmp -march=native -DGIT_REVISION=\&amp;quot;0.7.2.5-1a06\&amp;quot; -g -O2 -o .libs/perseustest_dyn perseustest.o  -L/lib64 -L/usr/lib64 /home/ravi/checkout/prefixbox/gandalf/src/libperseus-sdr/.libs/libperseus-sdr.so -ldl -lusb-1.0 -lpthread -fopenmp -Wl,-rpath -Wl,/home/ravi/checkout/prefixbox/gandalf/lib&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;make[1]: Leaving directory '/home/ravi/checkout/prefixbox/gandalf/src/libperseus-sdr'&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Installing:  [    |                                                                                                                                 ][&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
+    <widget class="QTextEdit" name="textEdit"/>
    </item>
   </layout>
  </widget>

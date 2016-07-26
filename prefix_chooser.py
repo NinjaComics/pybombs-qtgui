@@ -37,9 +37,10 @@ class PrefixChooserDialog(QDialog, Ui_PrefixChooserDialog):
         self.cfg.update_cfg_file(cfg_data, cfg_file)
         new_current_prefix = self.cfg.get_active_prefix()
         prefix_path = new_current_prefix.prefix_dir
+        new_prefix = self.cfg.get('default_prefix')
+        self.prefixchooser_dialogui.label_3.setText(new_prefix)
         if self.prefixchooser_dialogui.checkBox.isChecked():
             self._write_env_file(prefix_path)
-        self.close()
 
     def _write_env_file(self, path):
         prefix_recipe = recipe.get_recipe('default_prefix', target='prefix',
