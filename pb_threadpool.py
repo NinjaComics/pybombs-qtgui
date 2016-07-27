@@ -11,7 +11,7 @@ from PyQt5 import QtCore
 class DataGenerator(QtCore.QThread):
     data_generator = QtCore.pyqtSignal(list, list, list)
     indicator = QtCore.pyqtSignal(str)
-    data_done = QtCore.pyqtSignal(int)
+    data_done = QtCore.pyqtSignal(str)
 
     def __init__(self):
         QtCore.QThread.__init__(self)
@@ -96,6 +96,7 @@ class DataGenerator(QtCore.QThread):
 #A worker thread that takes care of install/update/remove tasks
 class AWorkerThread(QtCore.QThread):
     progress_tick = QtCore.pyqtSignal(int, int, int, str)
+    info_tick = QtCore.pyqtSignal(str)
     error_info = QtCore.pyqtSignal(str, str)
 
     def __init__(self, package_list):
@@ -109,6 +110,7 @@ class AWorkerThread(QtCore.QThread):
         if 'install' in self.package_list:
             install_list = self.package_list.get('install')
             for package in install_list:
+                self.worker_log.info('Preparing {} for installation'.format(package))
                 if instaman.install([package], 'install'):
                     self.worker_log.info("Install {} successful".format(package))
                     pkg_index = install_list.index(package)+1
@@ -123,7 +125,7 @@ class AWorkerThread(QtCore.QThread):
         if 'update' in self.package_list:
             update_list = self.package_list.get('update')
             for package in update_list:
-                self.worker_log.info("Attempting to update {}".format(package))
+                self.worker_log.info("Preparing {} to update".format(package))
                 if instaman.install([package], 'update', update_if_exists=True):
                     self.worker_log.info("Update {} successful".format(package))
                     pkg_index = update_list.index(package)+1
@@ -144,6 +146,7 @@ class AWorkerThread(QtCore.QThread):
             ### Remove packages
             for pkg in remove:
                 #Uninstall:
+                self.worker_log.info("Preparing {} to remove".format(pkg))
                 if pm.uninstall(pkg):
                     self.worker_log.info("Uninstall {} successful !".format(pkg))
                     pkg_index = remove_list.index(pkg)+1
@@ -156,6 +159,7 @@ class AWorkerThread(QtCore.QThread):
                 else:
                     self.worker_log.error("Failed to remove {}".format(pkg))
                     self.error_info.emit("Removing {} unsuccessful. Check logs !".format(pkg))
+        self.info_tick.emit("Tasks Completed successfully !")
         return
 
 #Generic Thread for future use

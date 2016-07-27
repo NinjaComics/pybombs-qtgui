@@ -24,6 +24,8 @@ from recipe_config import RecipeConfigDialog
 from new_recipe import NewRecipeDialog
 from prefix_chooser import PrefixChooserDialog
 from running_config import RunningConfigDialog
+from info_box import InfoDialog
+from load_msg import LoadingDialog
 
 #Import thread classes
 from pb_threadpool import AWorkerThread, GenericThread, DataGenerator
@@ -81,6 +83,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.action_Apply.triggered.connect(self.apply_changes)
         self.ui.action_Add_Recipe.triggered.connect(self.add_recipes_popup)
         self.ui.action_Choose_Prefix.triggered.connect(self.prefix_chooser_popup)
+        self.ui.action_Refresh.triggered.connect(self.populate_table)
         self.tb_line_edit.returnPressed.connect(self.quick_search_highlight)
 
         #tableWidget's ContextMenu
@@ -101,6 +104,8 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget_3.setRowCount(0)
         self.generate_data = DataGenerator()
         self.threadPool.append(self.generate_data)
+        #self.generate_data.indicator.connect(self.loading)
+        self.generate_data.indicator.connect(self.loading_popup)
         self.generate_data.data_generator.connect(self.create_table_widget)
         self.threadPool[len(self.threadPool)-1].start()
 
@@ -147,6 +152,13 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.new_recipe = NewRecipeDialog()
         self.new_recipe.setWindowTitle("Add New Recipe")
         self.new_recipe.show()
+
+    def loading_popup(self, loading_msg):
+        self.load_popup = LoadingDialog()
+        self.load_popup.loading_dialogui.label_2.setText(loading_msg)
+        self.load_popup.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
+        self.load_popup.show()
+        self.generate_data.data_done.connect(self.load_popup.close)
 
     def prefix_config_popup(self):
         self.prefix_conf = PrefixConfigDialog()
@@ -266,6 +278,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             self.module_info_popup(package_name)
 
     def apply_changes(self):
+        self.ui.label_3.setText('Preparing packages')
         self.ui.widget_3.show()
         self.final_packages = {'install': self.install_material,
                                'update': self.update_material,
@@ -273,16 +286,35 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.log.info('Final packages - {} {}'.format(self.final_packages.values(), self.final_packages.keys()))
         self.worker_thread = AWorkerThread(self.final_packages)
         self.threadPool.append(self.worker_thread)
+        self.worker_thread.info_tick.connect(self.init_progress)
         self.worker_thread.progress_tick.connect(self.update_progress)
+        self.worker_thread.info_tick.connect(self.info_dialog)
         self.threadPool[len(self.threadPool)-1].start()
         self.final_packages = {}
         self.install_material = []
         self.update_material = []
         self.remove_material = []
 
-    def update_progress(self, value, total):
-        self.ui.label_3.setText('{} of {} completed'.format(value, total))
-        self.ui.progressBar.setValue(value)
+    def info_dialog(self, err_msg):
+        self.ui.widget_3.hide()
+        self.info_box = InfoDialog()
+        self.info_box.info_dialogui.label.setText(err_msg)
+        self.info_box.setFixedSize(self.info_box.size())
+        self.info_box.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
+        self.info_box.show()
+
+    def init_progress(self, init_msg):
+        self.ui.label_3.setText(init_msg)
+        self.ui.progressBar.setValue(3)
+
+    def update_progress(self, pkg_idx, progress, total, action):
+        if action == 'install':
+            self.ui.label_3.setText('Installaing {} of {} completed'.format(pkg_idx, total))
+        elif action == 'update':
+            self.ui.label_3.setText('Updating {} of {} completed'.format(pkg_idx, total))
+        elif action == 'remove':
+            self.ui.label_3.setText('Removing {} of {} completed'.format(pkg_idx, total))
+        self.ui.progressBar.setValue(progress)
 
 def main():
     app = QApplication(sys.argv)
