@@ -301,7 +301,12 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.info_box.info_dialogui.label.setText(err_msg)
         self.info_box.setFixedSize(self.info_box.size())
         self.info_box.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
+        self.info_box.info_dialogui.pushButton_2.clicked.connect(self.refresf_finish)
         self.info_box.show()
+
+    def refresf_finish(self):
+        self.info_box.close()
+        self.populate_table()
 
     def init_progress(self, init_msg):
         self.ui.label_3.setText(init_msg)
