@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
 import os
+import signal
 import sys
+import subprocess
 
 # PyQt API imports
 from PyQt5 import QtCore, QtWidgets
@@ -16,7 +18,7 @@ from pybombs import config_manager, package_manager, recipe_manager, recipe, \
 from pybombs.recipe import Recipe
 
 # Import UI from designer generated python files
-from pyqtconvert.pybombs_main_window import Ui_MainWindow
+from pybombsgui.pyqtconvert.pybombs_main_window import Ui_MainWindow
 from about_pybombs import AboutPybombsDialog
 from search_box import SearchDialog
 from module_info import ModuleInfoDialog
@@ -70,6 +72,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget_3.horizontalHeader().setSectionResizeMode(
                         QtWidgets.QHeaderView.ResizeToContents)
         self.ui.widget_3.hide()
+        #self.ui.action_Discard_Changes.setEnabled(False)
 
         #Our GenericThread performing the data collection and setting it to TableWidgets
         self.populate_table()
@@ -77,14 +80,15 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         #It's all signals and slots !!!
         self.ui.action_About_PyBOMBS.triggered.connect(self.about_pybombs_popup)
         self.ui.action_Prefix_Manager.triggered.connect(self.prefix_config_popup)
-
         self.ui.action_RunningConfig.triggered.connect(self.running_config_popup)
         self.ui.action_Recipe_Manager.triggered.connect(self.recipe_manager_popup)
         self.ui.action_Apply.triggered.connect(self.apply_changes)
+        self.ui.action_Discard_Changes.triggered.connect(self.discard_changes)
         self.ui.action_Add_Recipe.triggered.connect(self.add_recipes_popup)
         self.ui.action_Choose_Prefix.triggered.connect(self.prefix_chooser_popup)
         self.ui.action_Refresh.triggered.connect(self.populate_table)
         self.tb_line_edit.returnPressed.connect(self.quick_search_highlight)
+        self.ui.pushButton_3.clicked.connect(self.thread_destroy)
 
         #tableWidget's ContextMenu
         self.ui.tableWidget.customContextMenuRequested.connect(
@@ -104,7 +108,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget_3.setRowCount(0)
         self.generate_data = DataGenerator()
         self.threadPool.append(self.generate_data)
-        #self.generate_data.indicator.connect(self.loading)
         self.generate_data.indicator.connect(self.loading_popup)
         self.generate_data.data_generator.connect(self.create_table_widget)
         self.threadPool[len(self.threadPool)-1].start()
@@ -143,6 +146,18 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             row += 1
 
     #Methods for Dialogs and Wizard
+    def request_pid(self):
+        self.pid_request.emit(1)
+
+    def discard_changes(self):
+        self.final_packages = {}
+        self.install_material = []
+        self.update_material = []
+        self.remove_material = []
+        self.ui.action_Apply.setEnabled(False)
+        #self.ui.action_Discard_Changes.setEnabled(False)
+        self.ui.statusbar.showMessage("Discarded selected packages", 2000)
+
     def about_pybombs_popup(self):
         self.about_pybombs = AboutPybombsDialog()
         self.about_pybombs.setWindowTitle("About Pybombs")
@@ -155,7 +170,7 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
 
     def loading_popup(self, loading_msg):
         self.load_popup = LoadingDialog()
-        self.load_popup.loading_dialogui.label_2.setText(loading_msg)
+        self.load_popup.loading_dialogui.label_3.setText(loading_msg)
         self.load_popup.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.load_popup.show()
         self.generate_data.data_done.connect(self.load_popup.close)
@@ -173,13 +188,9 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.recipe_conf.show()
 
     def prefix_chooser_popup(self):
-        self.ui.statusbar.clearMessage()
         self.choose_prefix = PrefixChooserDialog()
         self.choose_prefix.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
         self.choose_prefix.show()
-        if self.choose_prefix.exec_() == QDialog.Accepted:
-            current_prefix = self.cfg.get('default_prefix')
-            self.ui.statusbar.showMessage("Active prefix: {}".format(current_prefix), 2000)
 
     def module_info_popup(self, package_name):
         self.module_info = ModuleInfoDialog(package_name)
@@ -354,11 +365,15 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.worker_thread.info_tick.connect(self.init_progress)
         self.worker_thread.progress_tick.connect(self.update_progress)
         self.worker_thread.info_tick.connect(self.info_dialog)
+        self.worker_thread.pid_info.connect(self.collect_pid_info)
         self.threadPool[len(self.threadPool)-1].start()
         self.final_packages = {}
         self.install_material = []
         self.update_material = []
         self.remove_material = []
+
+    def collect_pid_info(self, pid):
+        self.pid_info = pid
 
     def info_dialog(self, err_msg):
         self.ui.widget_3.hide()
@@ -385,6 +400,46 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         elif action == 'remove':
             self.ui.label_3.setText('Removing {} of {} completed'.format(pkg_idx, total))
         self.ui.progressBar.setValue(progress)
+
+    def get_child_pids(self, pid):
+        """
+        Returns a list of all child pids associated with this pid.
+        """
+        get_child_pids_cmd = ["ps", "-o", "pid", "--ppid", "--no-headers"]
+        try:
+            children = subprocess.check_output(get_child_pids_cmd)
+        except (OSError, subprocess.CalledProcessError):
+            return []
+        return [int(child) for child in children]
+
+    def kill_process_tree(self, pid):
+        """
+        Kill the process and, if possible, all associated child processes.
+
+        TODO make more portable.
+        """
+        if pid is None:
+            pid = process.pid
+        children = self.get_child_pids(pid)
+        for child_pid in children:
+            self.kill_process_tree(child_pid)
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except OSError:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except OSError:
+                return
+
+    def thread_destroy(self):
+        self.kill_process_tree(self.pid_info)
+        self.ui.widget_3.hide()
+        self.final_packages = {}
+        self.install_material = []
+        self.update_material = []
+        self.remove_material = []
+        self.ui.action_Apply.setEnabled(False)
+        self.ui.statusbar.showMessage("Pybombs tasks terminated", 2000)
 
 def pybombs_path():
     cfg = config_manager.config_manager

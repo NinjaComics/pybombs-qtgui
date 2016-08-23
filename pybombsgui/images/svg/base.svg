@@ -298,7 +298,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="256.77641"
+     inkscape:cx="284.99652"
      inkscape:cy="37.499993"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -336,10 +336,10 @@
      transform="translate(0,-952.36216)">
     <g
        id="g9244"
-       transform="matrix(0.99546816,0,0,0.50020177,0.54162694,528.39669)"
-       inkscape:export-filename="/home/ravi/sandbox/pybombsurl/assets/dialog_banner.png"
-       inkscape:export-xdpi="89.998947"
-       inkscape:export-ydpi="89.998947">
+       transform="matrix(0.98974638,0,0,1.0453033,2.4695771,-43.094472)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196">
       <g
          inkscape:export-ydpi="89.900002"
          inkscape:export-xdpi="89.900002"
@@ -518,362 +518,326 @@
       </g>
     </g>
     <g
-       id="g9200"
-       transform="translate(29,-202)">
-      <flowRoot
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(1.007231,0,0,1.0264752,284.7086,898.02588)"
-         style="font-style:normal;font-weight:normal;font-size:27.04543114px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         id="flowRoot4288"
-         xml:space="preserve"><flowRegion
-           id="flowRegion4290"><rect
-             style="font-size:27.04543114px;fill:#ffffff"
-             y="-3"
-             x="63"
-             height="85"
-             width="274"
-             id="rect4292" /></flowRegion><flowPara
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.04543114px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-           id="flowPara4294">PyBOMBS</flowPara></flowRoot>      <flowRoot
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(1.007231,0,0,1.0264752,288.73752,913.42301)"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:44.25616074px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         id="flowRoot4296"
-         xml:space="preserve"><flowRegion
-           id="flowRegion4298"><rect
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:44.25616074px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff"
-             y="16"
-             x="60"
-             height="67"
-             width="265"
-             id="rect4300" /></flowRegion><flowPara
-           style="font-size:39.33880997px"
-           id="flowPara4302">App Store</flowPara></flowRoot>      <g
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         style="fill:#ffffff;fill-opacity:1;filter:url(#filter8622)"
-         transform="matrix(1.3303952,0,0,1.3725254,-67.439708,-315.48719)"
-         id="g7602">
-        <g
-           style="fill:#ffffff;fill-opacity:1"
-           id="g7604"
-           transform="matrix(0.35555556,0,0,0.35555556,113.4,700.10006)">
-          <path
-             inkscape:connector-curvature="0"
-             sodipodi:nodetypes="cccccccccc"
-             id="path7606"
-             d="m 274.62085,202.43515 c -4.02749,0 -7.2699,3.21167 -7.2699,7.20105 l 0,154.82274 0,4.80071 c 0,3.98938 3.24241,7.20103 7.2699,7.20104 l 227.82777,0 c 4.02748,0 7.2699,-3.21168 7.2699,-7.20104 l 0,-159.62345 c 0,-3.98938 -3.24242,-7.20105 -7.2699,-7.20105 l -227.82777,0 z"
-             style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
-             transform="translate(0,308.26772)" />
-          <path
-             inkscape:connector-curvature="0"
-             sodipodi:nodetypes="ccccccccc"
-             id="path7608"
-             d="m 294.49702,162.93766 c -3.94883,0 -5.97372,2.65275 -7.12802,5.11195 l -17.26191,36.31642 c -0.39683,0.62991 -0.4629,1.31909 -0.55655,1.99686 l 237.6247,0 -0.55694,-1.99686 -17.26213,-36.92878 c -1.15187,-2.45984 -3.1793,-4.49959 -7.12778,-4.49959 l -187.73137,0 z"
-             style="opacity:0.86000001;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
-             transform="translate(0,308.26772)" />
-          <path
-             inkscape:connector-curvature="0"
-             id="path7610"
-             d="m 268.5953,516.30802 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-             style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7156)"
-             transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)" />
-          <path
-             style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7290)"
-             d="m 297.11345,492.90783 -0.6751,2.10838 179.1233,0 -0.6444,-2.10838 -177.8038,0 z"
-             id="path7612"
-             inkscape:connector-curvature="0"
-             transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)" />
-          <path
-             inkscape:connector-curvature="0"
-             sodipodi:nodetypes="cccccc"
-             inkscape:r_cy="true"
-             inkscape:r_cx="true"
-             id="path7614"
-             d="m 509.68671,514.58814 -109.13918,-38.95076 -1.87367,-44.36066 86.73969,38.70156 c 3.22862,1.81825 6.76871,4.35785 8.81582,7.46238 l 15.45734,37.14748 z"
-             style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient5755);stroke-width:6.70513344;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-          <path
-             style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.55210578;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-             d="m 512.16693,513.60418 -109.13955,-38.95076 -1.87354,-44.36066 86.73967,38.70154 c 3.22902,1.81827 6.76908,4.35788 8.81583,7.46239 l 15.45759,37.14749 z"
-             id="path7616"
-             inkscape:r_cx="true"
-             inkscape:r_cy="true"
-             sodipodi:nodetypes="cccccc"
-             inkscape:connector-curvature="0"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-          <path
-             inkscape:export-ydpi="89.900002"
-             inkscape:export-xdpi="89.900002"
-             inkscape:connector-curvature="0"
-             sodipodi:nodetypes="cccccc"
-             inkscape:r_cy="true"
-             inkscape:r_cx="true"
-             id="path7618"
-             d="m 387.03499,506.61427 -119.94165,7.32768 15.71269,-40.70959 c 4.18859,-6.44762 11.70395,-9.01657 21.47453,-8.9561 l 86.68261,-4.07097 -3.92818,46.40898 z"
-             style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none" />
-          <path
-             inkscape:export-ydpi="89.900002"
-             inkscape:export-xdpi="89.900002"
-             style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.53278202;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-             d="m 387.03499,508.02857 -119.94165,7.32767 15.71269,-40.70959 c 4.18859,-6.44761 11.70395,-9.01658 21.47453,-8.95611 l 86.68261,-4.07098 -3.92818,46.40901 z"
-             id="path7620"
-             inkscape:r_cx="true"
-             inkscape:r_cy="true"
-             sodipodi:nodetypes="cccccc"
-             inkscape:connector-curvature="0" />
-          <path
-             style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-             d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-             id="path7622"
-             inkscape:connector-curvature="0"
-             transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)" />
-          <path
-             inkscape:connector-curvature="0"
-             id="path7624"
-             d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-             style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-             transform="matrix(0,-0.64758829,1.2734146,0,-359.19152,855.65938)" />
-          <path
-             transform="matrix(0,-0.64758829,1.2734146,0,-596.94304,855.65938)"
-             style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-             d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-             id="path7626"
-             inkscape:connector-curvature="0" />
-          <ellipse
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.9374786;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="ellipse7628"
-             cx="392.46875"
-             cy="597.54095"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002"
-             rx="60"
-             ry="61.069904" />
-          <path
-             inkscape:connector-curvature="0"
-             id="path7630"
-             d="m 399.88999,624.30133 0.77291,24.16742 -5.11725,-9.21925 -5.05499,10.17611 -0.80367,-25.13288 10.203,0.009 z"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:14.81802559;stroke-miterlimit:4;stroke-dasharray:59.27209346, 14.81802337;stroke-dashoffset:0;stroke-opacity:0"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-          <path
-             transform="matrix(-4.4732177,-0.79488603,0.48699018,-5.3472982,585.92373,716.54903)"
-             inkscape:transform-center-y="-0.63521651"
-             inkscape:transform-center-x="-0.900789"
-             d="M 49.497475,20.953164 41.430869,22.1564 37.793805,14.856421 43.612582,9.1415508 50.845848,12.909545 Z"
-             inkscape:randomized="0"
-             inkscape:rounded="0"
-             inkscape:flatsided="true"
-             sodipodi:arg2="1.4227255"
-             sodipodi:arg1="0.79440693"
-             sodipodi:r2="3.4688909"
-             sodipodi:r1="6.9377818"
-             sodipodi:cy="16.003416"
-             sodipodi:cx="44.636116"
-             sodipodi:sides="5"
-             id="path7632"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:9.80000019;stroke-miterlimit:4;stroke-dasharray:39.2, 9.8;stroke-dashoffset:0;stroke-opacity:0"
-             sodipodi:type="star"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-          <ellipse
-             ry="6.5838633"
-             rx="6.2732821"
-             transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
-             cy="602.5575"
-             cx="-387.69193"
-             id="ellipse7634"
-             style="opacity:0.603;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-          <ellipse
-             ry="6.5838633"
-             rx="6.2732821"
-             transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
-             style="opacity:0.6;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
-             id="ellipse7636"
-             cx="-361.43091"
-             cy="602.45721"
-             inkscape:export-xdpi="89.900002"
-             inkscape:export-ydpi="89.900002" />
-        </g>
+       id="g7602"
+       transform="matrix(1.3303952,0,0,1.3725254,-164.43971,-327.48719)"
+       style="fill:#ffffff;fill-opacity:1;filter:url(#filter8622)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196">
+      <g
+         transform="matrix(0.35555556,0,0,0.35555556,113.4,700.10006)"
+         id="g7604"
+         style="fill:#ffffff;fill-opacity:1">
+        <path
+           transform="translate(0,308.26772)"
+           style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 274.62085,202.43515 c -4.02749,0 -7.2699,3.21167 -7.2699,7.20105 l 0,154.82274 0,4.80071 c 0,3.98938 3.24241,7.20103 7.2699,7.20104 l 227.82777,0 c 4.02748,0 7.2699,-3.21168 7.2699,-7.20104 l 0,-159.62345 c 0,-3.98938 -3.24242,-7.20105 -7.2699,-7.20105 l -227.82777,0 z"
+           id="path7606"
+           sodipodi:nodetypes="cccccccccc"
+           inkscape:connector-curvature="0" />
+        <path
+           transform="translate(0,308.26772)"
+           style="opacity:0.86000001;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 294.49702,162.93766 c -3.94883,0 -5.97372,2.65275 -7.12802,5.11195 l -17.26191,36.31642 c -0.39683,0.62991 -0.4629,1.31909 -0.55655,1.99686 l 237.6247,0 -0.55694,-1.99686 -17.26213,-36.92878 c -1.15187,-2.45984 -3.1793,-4.49959 -7.12778,-4.49959 l -187.73137,0 z"
+           id="path7608"
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:connector-curvature="0" />
+        <path
+           transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+           style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7156)"
+           d="m 268.5953,516.30802 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+           id="path7610"
+           inkscape:connector-curvature="0" />
+        <path
+           transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+           inkscape:connector-curvature="0"
+           id="path7612"
+           d="m 297.11345,492.90783 -0.6751,2.10838 179.1233,0 -0.6444,-2.10838 -177.8038,0 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7290)" />
+        <path
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient5755);stroke-width:6.70513344;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+           d="m 509.68671,514.58814 -109.13918,-38.95076 -1.87367,-44.36066 86.73969,38.70156 c 3.22862,1.81825 6.76871,4.35785 8.81582,7.46238 l 15.45734,37.14748 z"
+           id="path7614"
+           inkscape:r_cx="true"
+           inkscape:r_cy="true"
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc"
+           inkscape:r_cy="true"
+           inkscape:r_cx="true"
+           id="path7616"
+           d="m 512.16693,513.60418 -109.13955,-38.95076 -1.87354,-44.36066 86.73967,38.70154 c 3.22902,1.81827 6.76908,4.35788 8.81583,7.46239 l 15.45759,37.14749 z"
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.55210578;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none" />
+        <path
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+           d="m 387.03499,506.61427 -119.94165,7.32768 15.71269,-40.70959 c 4.18859,-6.44762 11.70395,-9.01657 21.47453,-8.9561 l 86.68261,-4.07097 -3.92818,46.40898 z"
+           id="path7618"
+           inkscape:r_cx="true"
+           inkscape:r_cy="true"
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           inkscape:export-xdpi="89.900002"
+           inkscape:export-ydpi="89.900002" />
+        <path
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc"
+           inkscape:r_cy="true"
+           inkscape:r_cx="true"
+           id="path7620"
+           d="m 387.03499,508.02857 -119.94165,7.32767 15.71269,-40.70959 c 4.18859,-6.44761 11.70395,-9.01658 21.47453,-8.95611 l 86.68261,-4.07098 -3.92818,46.40901 z"
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.53278202;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+           inkscape:export-xdpi="89.900002"
+           inkscape:export-ydpi="89.900002" />
+        <path
+           transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+           inkscape:connector-curvature="0"
+           id="path7622"
+           d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+           style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)" />
+        <path
+           transform="matrix(0,-0.64758829,1.2734146,0,-359.19152,855.65938)"
+           style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
+           d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+           id="path7624"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path7626"
+           d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+           style="opacity:0.95;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
+           transform="matrix(0,-0.64758829,1.2734146,0,-596.94304,855.65938)" />
+        <ellipse
+           ry="61.069904"
+           rx="60"
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           cy="597.54095"
+           cx="392.46875"
+           id="ellipse7628"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.9374786;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:14.81802559;stroke-miterlimit:4;stroke-dasharray:59.27209346, 14.81802337;stroke-dashoffset:0;stroke-opacity:0"
+           d="m 399.88999,624.30133 0.77291,24.16742 -5.11725,-9.21925 -5.05499,10.17611 -0.80367,-25.13288 10.203,0.009 z"
+           id="path7630"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           sodipodi:type="star"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:9.80000019;stroke-miterlimit:4;stroke-dasharray:39.2, 9.8;stroke-dashoffset:0;stroke-opacity:0"
+           id="path7632"
+           sodipodi:sides="5"
+           sodipodi:cx="44.636116"
+           sodipodi:cy="16.003416"
+           sodipodi:r1="6.9377818"
+           sodipodi:r2="3.4688909"
+           sodipodi:arg1="0.79440693"
+           sodipodi:arg2="1.4227255"
+           inkscape:flatsided="true"
+           inkscape:rounded="0"
+           inkscape:randomized="0"
+           d="M 49.497475,20.953164 41.430869,22.1564 37.793805,14.856421 43.612582,9.1415508 50.845848,12.909545 Z"
+           inkscape:transform-center-x="-0.900789"
+           inkscape:transform-center-y="-0.63521651"
+           transform="matrix(-4.4732177,-0.79488603,0.48699018,-5.3472982,585.92373,716.54903)" />
+        <ellipse
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           style="opacity:0.603;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
+           id="ellipse7634"
+           cx="-387.69193"
+           cy="602.5575"
+           transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
+           rx="6.2732821"
+           ry="6.5838633" />
+        <ellipse
+           inkscape:export-ydpi="89.900002"
+           inkscape:export-xdpi="89.900002"
+           cy="602.45721"
+           cx="-361.43091"
+           id="ellipse7636"
+           style="opacity:0.6;fill:#ffffff;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
+           transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
+           rx="6.2732821"
+           ry="6.5838633" />
       </g>
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         style="display:inline;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         d="m 216.78289,897.07249 c -1.78539,0 -3.22275,1.46954 -3.22275,3.29494 l 0,70.84089 0,2.19662 c 0,1.82538 1.43736,3.2949 3.22275,3.29492 l 100.99649,0 c 1.78538,0 3.22275,-1.46955 3.22275,-3.29492 l 0,-73.03751 c 0,-1.8254 -1.43737,-3.29494 -3.22275,-3.29494 l -100.99649,0 z"
-         id="path6998-9"
-         sodipodi:nodetypes="cccccccccc"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         style="opacity:0.86000001;fill:#aa4400;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         d="m 225.59405,878.99997 c -1.75054,0 -2.64817,1.2138 -3.15988,2.33904 l -7.65224,16.61697 c -0.17591,0.28823 -0.20521,0.60358 -0.24672,0.91369 l 105.33948,0 -0.24689,-0.91369 -7.65235,-16.89718 c -0.51061,-1.12551 -1.40939,-2.05883 -3.15974,-2.05883 l -83.22166,0 z"
-         id="rect6024-1"
-         sodipodi:nodetypes="ccccccccc"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(0.42635715,0,0,0.45762846,99.52196,663.36566)"
-         style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7156)"
-         d="m 268.5953,516.30802 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-         id="rect6987-3"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(0.42635715,0,0,0.45762846,99.52196,663.36566)"
-         inkscape:connector-curvature="0"
-         id="path7058"
-         d="m 297.11345,492.90783 -0.6751,2.10838 179.1233,0 -0.6444,-2.10838 -177.8038,0 z"
-         style="fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7290)" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient5755);stroke-width:6.70513344;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-         d="m 320.98803,898.85023 -48.38161,-17.82234 -0.8306,-20.29774 38.45187,17.70836 c 1.43126,0.83195 3.00059,1.99397 3.90807,3.41448 l 6.85227,16.99724 z"
-         id="path4748-5"
-         inkscape:r_cx="true"
-         inkscape:r_cy="true"
-         sodipodi:nodetypes="cccccc"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cccccc"
-         inkscape:r_cy="true"
-         inkscape:r_cx="true"
-         id="path9116-6"
-         d="m 322.08752,898.40002 -48.38178,-17.82234 -0.83054,-20.29774 38.45186,17.70834 c 1.43143,0.83195 3.00074,1.99399 3.90807,3.41448 l 6.85239,16.99726 z"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.24865474;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-         d="m 266.61629,895.20171 -53.17036,3.35287 6.96545,-18.62714 c 1.85683,-2.95018 5.18839,-4.12563 9.51971,-4.09796 l 38.42657,-1.86272 -1.74137,21.23495 z"
-         id="path5814"
-         inkscape:r_cx="true"
-         inkscape:r_cy="true"
-         sodipodi:nodetypes="cccccc"
-         inkscape:connector-curvature="0"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-ydpi="89.900002" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cccccc"
-         inkscape:r_cy="true"
-         inkscape:r_cx="true"
-         id="path5816"
-         d="m 266.61629,895.84885 -53.17036,3.35286 6.96545,-18.62716 c 1.85683,-2.95016 5.18839,-4.12563 9.51971,-4.09796 l 38.42657,-1.86273 -1.74137,21.23499 z"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.2399518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-ydpi="89.900002" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(0.42635715,0,0,0.45762846,99.52196,663.36566)"
-         inkscape:connector-curvature="0"
-         id="path7160"
-         d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-         style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         transform="matrix(0,-0.29631133,0.56450709,0,-64.187326,1054.9114)"
-         style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-         d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-         id="path7210"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:connector-curvature="0"
-         id="path7212"
-         d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
-         style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-         transform="matrix(0,-0.29631133,0.56450709,0,-169.58302,1054.9114)" />
-      <ellipse
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         ry="27.943226"
-         rx="26.598114"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         cy="936.8067"
-         cx="269.02524"
-         id="path4179-0"
-         style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.9374786;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         style="opacity:1;fill:#c8b7b7;fill-opacity:1;stroke:#e06e2f;stroke-width:6.67366982;stroke-miterlimit:4;stroke-dasharray:26.69467873, 6.67366969;stroke-dashoffset:0;stroke-opacity:0"
-         d="m 272.31493,949.05075 0.34263,11.05807 -2.26848,-4.21836 -2.24088,4.65619 -0.35626,-11.49982 4.52299,0.004 z"
-         id="path4193-6"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         sodipodi:type="star"
-         style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:#e06e2f;stroke-width:9.80000019;stroke-miterlimit:4;stroke-dasharray:39.2, 9.8;stroke-dashoffset:0;stroke-opacity:0"
-         id="path4195-1"
-         sodipodi:sides="5"
-         sodipodi:cx="44.636116"
-         sodipodi:cy="16.003416"
-         sodipodi:r1="6.9377818"
-         sodipodi:r2="3.4688909"
-         sodipodi:arg1="0.79440693"
-         sodipodi:arg2="1.4227255"
-         inkscape:flatsided="true"
-         inkscape:rounded="0"
-         inkscape:randomized="0"
-         d="M 49.497475,20.953164 41.430869,22.1564 37.793805,14.856421 43.612582,9.1415508 50.845848,12.909545 Z"
-         inkscape:transform-center-x="-0.85410837"
-         inkscape:transform-center-y="-0.61662381"
-         transform="matrix(-1.9829859,-0.36370908,0.21588367,-2.4467167,354.78404,991.25974)" />
-      <ellipse
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         style="opacity:0.603;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:9.72573471;stroke-miterlimit:4;stroke-dasharray:38.90294064, 9.72573517;stroke-dashoffset:0;stroke-opacity:0"
-         id="ellipse4197"
-         cx="-246.35612"
-         cy="939.34705"
-         transform="matrix(-0.99999962,-8.695584e-4,0.03096713,0.9995204,0,0)"
-         rx="2.7809579"
-         ry="3.0124266" />
-      <ellipse
-         inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/qtgui/images/loading.png"
-         inkscape:export-ydpi="89.900002"
-         inkscape:export-xdpi="89.900002"
-         cy="939.30121"
-         cx="-234.71463"
-         id="ellipse4199"
-         style="opacity:0.6;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:9.72573471;stroke-miterlimit:4;stroke-dasharray:38.90294064, 9.72573517;stroke-dashoffset:0;stroke-opacity:0"
-         transform="matrix(-0.99999962,-8.695584e-4,0.03096713,0.9995204,0,0)"
-         rx="2.7809579"
-         ry="3.0124266" />
     </g>
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc"
+       id="path6998-9"
+       d="m 119.78289,885.07249 c -1.78539,0 -3.22275,1.46954 -3.22275,3.29494 l 0,70.84089 0,2.19662 c 0,1.82538 1.43736,3.2949 3.22275,3.29492 l 100.99649,0 c 1.78538,0 3.22275,-1.46955 3.22275,-3.29492 l 0,-73.03751 c 0,-1.8254 -1.43737,-3.29494 -3.22275,-3.29494 l -100.99649,0 z"
+       style="display:inline;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       id="rect6024-1"
+       d="m 128.59405,866.99997 c -1.75054,0 -2.64817,1.2138 -3.15988,2.33904 l -7.65224,16.61697 c -0.17591,0.28823 -0.20521,0.60358 -0.24672,0.91369 l 105.33948,0 -0.24689,-0.91369 -7.65235,-16.89718 c -0.51061,-1.12551 -1.40939,-2.05883 -3.15974,-2.05883 l -83.22166,0 z"
+       style="opacity:0.86000001;fill:#aa4400;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       inkscape:connector-curvature="0"
+       id="rect6987-3"
+       d="m 268.5953,516.30802 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+       style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7156)"
+       transform="matrix(0.42635715,0,0,0.45762846,2.52196,651.36566)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       style="fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7290)"
+       d="m 297.11345,492.90783 -0.6751,2.10838 179.1233,0 -0.6444,-2.10838 -177.8038,0 z"
+       id="path7058"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.42635715,0,0,0.45762846,2.52196,651.36566)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:r_cy="true"
+       inkscape:r_cx="true"
+       id="path4748-5"
+       d="m 223.98803,886.85023 -48.38161,-17.82234 -0.8306,-20.29774 38.45187,17.70836 c 1.43126,0.83195 3.00059,1.99397 3.90807,3.41448 l 6.85227,16.99724 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient5755);stroke-width:6.70513344;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.24865474;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       d="m 225.08752,886.40002 -48.38178,-17.82234 -0.83054,-20.29774 38.45186,17.70834 c 1.43143,0.83195 3.00074,1.99399 3.90807,3.41448 l 6.85239,16.99726 z"
+       id="path9116-6"
+       inkscape:r_cx="true"
+       inkscape:r_cy="true"
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-xdpi="90.059196"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:r_cy="true"
+       inkscape:r_cx="true"
+       id="path5814"
+       d="m 169.61629,883.20171 -53.17036,3.35287 6.96545,-18.62714 c 1.85683,-2.95018 5.18839,-4.12563 9.51971,-4.09796 l 38.42657,-1.86272 -1.74137,21.23495 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-xdpi="90.059196"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.2399518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       d="m 169.61629,883.84885 -53.17036,3.35286 6.96545,-18.62716 c 1.85683,-2.95016 5.18839,-4.12563 9.51971,-4.09796 l 38.42657,-1.86273 -1.74137,21.23499 z"
+       id="path5816"
+       inkscape:r_cx="true"
+       inkscape:r_cy="true"
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
+       d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+       id="path7160"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.42635715,0,0,0.45762846,2.52196,651.36566)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7210"
+       d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+       style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
+       transform="matrix(0,-0.29631133,0.56450709,0,-161.18733,1042.9114)"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <path
+       transform="matrix(0,-0.29631133,0.56450709,0,-266.58302,1042.9114)"
+       style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
+       d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
+       id="path7212"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196" />
+    <ellipse
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.9374786;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4179-0"
+       cx="172.02524"
+       cy="924.8067"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       rx="26.598114"
+       ry="27.943226"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4193-6"
+       d="m 175.31493,937.05075 0.34263,11.05807 -2.26848,-4.21836 -2.24088,4.65619 -0.35626,-11.49982 4.52299,0.004 z"
+       style="opacity:1;fill:#c8b7b7;fill-opacity:1;stroke:#e06e2f;stroke-width:6.67366982;stroke-miterlimit:4;stroke-dasharray:26.69467873, 6.67366969;stroke-dashoffset:0;stroke-opacity:0"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <path
+       transform="matrix(-1.9829859,-0.36370908,0.21588367,-2.4467167,257.78404,979.25974)"
+       inkscape:transform-center-y="-0.61662381"
+       inkscape:transform-center-x="-0.85410837"
+       d="M 49.497475,20.953164 41.430869,22.1564 37.793805,14.856421 43.612582,9.1415508 50.845848,12.909545 Z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="1.4227255"
+       sodipodi:arg1="0.79440693"
+       sodipodi:r2="3.4688909"
+       sodipodi:r1="6.9377818"
+       sodipodi:cy="16.003416"
+       sodipodi:cx="44.636116"
+       sodipodi:sides="5"
+       id="path4195-1"
+       style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:#e06e2f;stroke-width:9.80000019;stroke-miterlimit:4;stroke-dasharray:39.2, 9.8;stroke-dashoffset:0;stroke-opacity:0"
+       sodipodi:type="star"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <ellipse
+       ry="3.0124266"
+       rx="2.7809579"
+       transform="matrix(-0.99999962,-8.695584e-4,0.03096713,0.9995204,0,0)"
+       cy="927.42529"
+       cx="-149.72527"
+       id="ellipse4197"
+       style="opacity:0.603;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:9.72573471;stroke-miterlimit:4;stroke-dasharray:38.90294064, 9.72573517;stroke-dashoffset:0;stroke-opacity:0"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
+    <ellipse
+       ry="3.0124266"
+       rx="2.7809579"
+       transform="matrix(-0.99999962,-8.695584e-4,0.03096713,0.9995204,0,0)"
+       style="opacity:0.6;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:9.72573471;stroke-miterlimit:4;stroke-dasharray:38.90294064, 9.72573517;stroke-dashoffset:0;stroke-opacity:0"
+       id="ellipse4199"
+       cx="-138.08377"
+       cy="927.37946"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:35.02016449px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#800000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1030,18 +994,18 @@
          inkscape:connector-curvature="0" />
     </g>
     <text
-       inkscape:export-ydpi="89.998947"
-       inkscape:export-xdpi="89.998947"
-       inkscape:export-filename="/home/ravi/sandbox/pybombsurl/assets/dialog_banner.png"
+       inkscape:export-ydpi="90.059196"
+       inkscape:export-xdpi="90.059196"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/loading.png"
        transform="scale(1.0006744,0.99932606)"
        sodipodi:linespacing="125%"
        id="text4474"
-       y="1227.1884"
-       x="100.62679"
+       y="930.98877"
+       x="249.0266"
        style="font-style:normal;font-weight:normal;font-size:35.02016449px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="1227.1884"
-         x="100.62679"
+         y="930.98877"
+         x="249.0266"
          id="tspan4476"
          sodipodi:role="line">PyBOMBS App Store</tspan></text>
   </g>

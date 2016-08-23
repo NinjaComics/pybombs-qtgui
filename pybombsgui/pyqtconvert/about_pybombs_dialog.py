@@ -13,7 +13,9 @@ class Ui_AboutPybombsDialog(object):
         AboutPybombsDialog.setObjectName("AboutPybombsDialog")
         AboutPybombsDialog.resize(500, 360)
         self.label = QtWidgets.QLabel(AboutPybombsDialog)
-        self.label.setGeometry(QtCore.QRect(10, 10, 480, 100))
+        self.label.setGeometry(QtCore.QRect(10, 0, 480, 100))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/noprefix/images/about_logo.png"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(AboutPybombsDialog)
@@ -28,7 +30,7 @@ class Ui_AboutPybombsDialog(object):
         self.pushButton_3.setGeometry(QtCore.QRect(370, 300, 101, 41))
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_3 = QtWidgets.QLabel(AboutPybombsDialog)
-        self.label_3.setGeometry(QtCore.QRect(126, 90, 271, 20))
+        self.label_3.setGeometry(QtCore.QRect(120, 100, 271, 20))
         self.label_3.setStyleSheet("font:  11pt \"Ubuntu\"; font-weight: bold;\n"
 "")
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
@@ -63,7 +65,6 @@ class Ui_AboutPybombsDialog(object):
     def retranslateUi(self, AboutPybombsDialog):
         _translate = QtCore.QCoreApplication.translate
         AboutPybombsDialog.setWindowTitle(_translate("AboutPybombsDialog", "Dialog"))
-        self.label.setText(_translate("AboutPybombsDialog", "Pybombs Logo"))
         self.label_2.setText(_translate("AboutPybombsDialog", "A GUI frontend for PyBOMBS - the GNU Radio install management system for resolving dependencies and pulling in OOT Modules"))
         self.pushButton.setText(_translate("AboutPybombsDialog", "Credits"))
         self.pushButton_3.setText(_translate("AboutPybombsDialog", "Close"))

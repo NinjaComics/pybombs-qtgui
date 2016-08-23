@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/running_config.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,8 +13,11 @@ class Ui_RunningConfigDialog(object):
         RunningConfigDialog.setObjectName("RunningConfigDialog")
         RunningConfigDialog.resize(658, 480)
         RunningConfigDialog.setFocusPolicy(QtCore.Qt.TabFocus)
-        self.verticalLayout = QtWidgets.QVBoxLayout(RunningConfigDialog)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.gridLayout = QtWidgets.QGridLayout(RunningConfigDialog)
+        self.gridLayout.setObjectName("gridLayout")
+        self.pushButton = QtWidgets.QPushButton(RunningConfigDialog)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout.addWidget(self.pushButton, 2, 0, 1, 1, QtCore.Qt.AlignRight)
         self.tabWidget = QtWidgets.QTabWidget(RunningConfigDialog)
         self.tabWidget.setFocusPolicy(QtCore.Qt.TabFocus)
         self.tabWidget.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
@@ -47,38 +50,27 @@ class Ui_RunningConfigDialog(object):
         self.textEdit_2.setObjectName("textEdit_2")
         self.verticalLayout_3.addWidget(self.textEdit_2)
         self.tabWidget.addTab(self.tab_2, "")
-        self.verticalLayout.addWidget(self.tabWidget)
-        self.label = QtWidgets.QLabel(RunningConfigDialog)
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/noprefix/images/config.png"))
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.buttonBox = QtWidgets.QDialogButtonBox(RunningConfigDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
 
         self.retranslateUi(RunningConfigDialog)
         self.tabWidget.setCurrentIndex(0)
-        self.buttonBox.accepted.connect(RunningConfigDialog.accept)
-        self.buttonBox.rejected.connect(RunningConfigDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(RunningConfigDialog)
 
     def retranslateUi(self, RunningConfigDialog):
         _translate = QtCore.QCoreApplication.translate
         RunningConfigDialog.setWindowTitle(_translate("RunningConfigDialog", "Running Config"))
+        self.pushButton.setText(_translate("RunningConfigDialog", "Ok"))
         self.textEdit.setHtml(_translate("RunningConfigDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("RunningConfigDialog", "User-Local Config"))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Cantarell\';\"><br /></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("RunningConfigDialog", "User - Local Config"))
         self.textEdit_2.setHtml(_translate("RunningConfigDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("RunningConfigDialog", "Prefix-Local Config"))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Cantarell\';\"><br /></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("RunningConfigDialog", "Prefix - Local Config"))
 
 import myicons_rc

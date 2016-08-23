@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/recipe_config.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -25,6 +25,7 @@ class Ui_RecipeConfigDialog(object):
         self.lineEdit_2 = QtWidgets.QLineEdit(RecipeConfigDialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(10, 360, 381, 41))
         self.lineEdit_2.setText("")
+        self.lineEdit_2.setClearButtonEnabled(True)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label = QtWidgets.QLabel(RecipeConfigDialog)
         self.label.setGeometry(QtCore.QRect(10, 240, 101, 20))
@@ -54,6 +55,7 @@ class Ui_RecipeConfigDialog(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget.verticalHeader().setVisible(False)
         self.pushButton_2 = QtWidgets.QPushButton(RecipeConfigDialog)
         self.pushButton_2.setEnabled(True)
         self.pushButton_2.setGeometry(QtCore.QRect(490, 360, 131, 41))
@@ -70,11 +72,8 @@ class Ui_RecipeConfigDialog(object):
         self.label_4.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(255, 105, 5);")
         self.label_4.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
-        self.progressBar = QtWidgets.QProgressBar(RecipeConfigDialog)
-        self.progressBar.setGeometry(QtCore.QRect(0, 440, 642, 21))
-        self.progressBar.setProperty("value", 24)
-        self.progressBar.setObjectName("progressBar")
         self.checkBox = QtWidgets.QCheckBox(RecipeConfigDialog)
         self.checkBox.setGeometry(QtCore.QRect(260, 290, 131, 26))
         self.checkBox.setObjectName("checkBox")

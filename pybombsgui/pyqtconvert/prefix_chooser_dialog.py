@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/prefix_chooser.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,13 +26,13 @@ class Ui_PrefixChooserDialog(object):
         self.pushButton.setDefault(True)
         self.pushButton.setObjectName("pushButton")
         self.label = QtWidgets.QLabel(PrefixChooserDialog)
-        self.label.setGeometry(QtCore.QRect(20, 20, 111, 20))
+        self.label.setGeometry(QtCore.QRect(20, 20, 115, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_3 = QtWidgets.QLabel(PrefixChooserDialog)
-        self.label_3.setGeometry(QtCore.QRect(140, 20, 151, 31))
+        self.label_3.setGeometry(QtCore.QRect(150, 20, 150, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_3.setFont(font)

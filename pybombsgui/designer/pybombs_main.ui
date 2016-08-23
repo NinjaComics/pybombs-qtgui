@@ -400,8 +400,6 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
      <string>Help</string>
     </property>
     <addaction name="action_About_PyBOMBS"/>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuActions"/>
@@ -432,21 +430,13 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
    <addaction name="action_Prefix_Manager"/>
    <addaction name="action_Recipe_Manager"/>
    <addaction name="separator"/>
-   <addaction name="separator"/>
   </widget>
-  <action name="action_About_GNU_Radio">
-   <property name="text">
-    <string>&amp;About GNU Radio</string>
-   </property>
-  </action>
-  <action name="action_About_CGRAN">
-   <property name="text">
-    <string>&amp;About CGRAN</string>
-   </property>
-  </action>
   <action name="action_Apply">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="system-software-install"/>
    </property>
    <property name="text">
     <string>&amp;Apply Changes</string>
@@ -459,16 +449,11 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
    </property>
   </action>
   <action name="action_Refresh">
+   <property name="icon">
+    <iconset theme="view-refresh"/>
+   </property>
    <property name="text">
     <string>&amp;Refresh List</string>
-   </property>
-   <property name="iconVisibleInMenu">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="action_Preferences">
-   <property name="text">
-    <string>&amp;Prefix Manager</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -485,6 +470,9 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
    </property>
   </action>
   <action name="action_Discard_Changes">
+   <property name="icon">
+    <iconset theme="document-revert"/>
+   </property>
    <property name="text">
     <string>&amp;Discard Changes</string>
    </property>

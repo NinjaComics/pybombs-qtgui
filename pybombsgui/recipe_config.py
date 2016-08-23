@@ -5,7 +5,7 @@ import shutil
 
 # PyQt API imports
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QMenu, QFileDialog
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
@@ -30,31 +30,15 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
         self.set_table_widget()
 
         #tableWidget properties
-        self.recipeconfig_dialogui.tableWidget.setSelectionBehavior(
-            QtWidgets.QAbstractItemView.SelectRows)
-        self.recipeconfig_dialogui.tableWidget.setEditTriggers(
-            QtWidgets.QAbstractItemView.NoEditTriggers)
         self.recipeconfig_dialogui.tableWidget.resizeColumnsToContents()
         self.recipeconfig_dialogui.tableWidget.verticalHeader().setVisible(False)
-        self.recipeconfig_dialogui.tableWidget.setContextMenuPolicy(
-            Qt.CustomContextMenu)
         self.recipeconfig_dialogui.tableWidget.customContextMenuRequested.connect(
             self.context_menu)
-        self.recipeconfig_dialogui.pushButton_2.clicked.connect(self.add_recipe_repo)
-
-        self.recipeconfig_dialogui.progressBar.hide()
-        self.recipeconfig_dialogui.label_4.setAlignment(
-            QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+        self.recipeconfig_dialogui.pushButton_2.clicked.connect(self.collect_recipe_info)
 
         #The lineEdit properties
         self.recipeconfig_dialogui.lineEdit.setPlaceholderText('Recipe Alias')
         self.recipeconfig_dialogui.lineEdit_2.setPlaceholderText('ex: git+https://<url>')
-        self.recipe_alias = self.recipeconfig_dialogui.lineEdit.text()
-        self.recipe_uri = self.recipeconfig_dialogui.lineEdit_2.text()
-        self.recipeconfig_dialogui.lineEdit_2.editingFinished.connect(
-            self.collect_recipe_info)
-        self.recipeconfig_dialogui.lineEdit.cursorPositionChanged.connect(
-            self.default_strip)
         self.recipeconfig_dialogui.pushButton.clicked.connect(self.get_fname)
 
     def get_fname(self):
@@ -97,14 +81,23 @@ class RecipeConfigDialog(QDialog, Ui_RecipeConfigDialog):
             row += 1
 
     def collect_recipe_info(self):
-
+        self.recipe_alias = self.recipeconfig_dialogui.lineEdit.text()
+        self.recipe_uri = self.recipeconfig_dialogui.lineEdit_2.text()
         if self.recipe_alias in self.named_sources:
-            alias_msg = 'Ruh oh ! This recipe alias already exists. Overwrite ?'
-            self.color_strips(alias_msg, 'red')
-            self.recipeconfig_dialogui.pushButton_2.setEnabled(True)
-            self.recipeconfig_dialogui.pushButton_2.setText("Overwrite")
+            msgBox = QMessageBox()
+            msgBox.setText("Recipe Alias already exists. Overwrite ?")
+            msgBox.setWindowTitle("Recipe Overwrite")
+            msgBox.addButton(QMessageBox.Yes)
+            msgBox.addButton(QMessageBox.No)
+            msgBox.setDefaultButton(QMessageBox.No)
+            ret = msgBox.exec_()
+            if  ret == QMessageBox.Yes:
+                self.add_recipe_repo()
+            elif ret == QMessageBox.No:
+                self.recipeconfig_dialogui.lineEdit.clear()
+                self.recipeconfig_dialogui.lineEdit_2.clear()
         else:
-            self.recipeconfig_dialogui.pushButton_2.setEnabled(True)
+            self.add_recipe_repo()
 
     def context_menu(self):
         """Custom ContextMenu that helps us install/update/remove OOT Modules

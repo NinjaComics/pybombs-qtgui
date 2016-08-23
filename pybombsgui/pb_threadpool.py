@@ -1,3 +1,6 @@
+#Generic imports
+import os
+
 #Pybombs imports
 from pybombs import install_manager, package_manager, recipe, dep_manager,\
      pb_logging, recipe_manager, config_manager
@@ -98,6 +101,7 @@ class AWorkerThread(QtCore.QThread):
     progress_tick = QtCore.pyqtSignal(int, int, int, str)
     info_tick = QtCore.pyqtSignal(str)
     error_info = QtCore.pyqtSignal(str, str)
+    pid_info = QtCore.pyqtSignal(int)
 
     def __init__(self, package_list):
         QtCore.QThread.__init__(self)
@@ -105,8 +109,9 @@ class AWorkerThread(QtCore.QThread):
         self.worker_log = pb_logging.logger.getChild("AWorkerThread")
 
     def run(self):
+        self.pid = os.getpid()
+        self.pid_info.emit(self.pid)
         instaman = install_manager.InstallManager()
-
         if 'install' in self.package_list:
             install_list = self.package_list.get('install')
             for package in install_list:
@@ -134,7 +139,8 @@ class AWorkerThread(QtCore.QThread):
                                             len(update_list), 'update')
                 else:
                     self.worker_log.error("Update Failed")
-                    self.error_info.emit("Update {} failed. Check logs !".format(package))
+                    self.error_info.emit(
+                        "Update {} failed. Check logs !".format(package))
 
         if 'remove' in self.package_list:
             remove_list = self.package_list.get('remove')
@@ -158,7 +164,9 @@ class AWorkerThread(QtCore.QThread):
                     self.inventory.save()
                 else:
                     self.worker_log.error("Failed to remove {}".format(pkg))
-                    self.error_info.emit("Removing {} unsuccessful. Check logs !".format(pkg))
+                    self.error_info.emit(
+                        "Removing {} unsuccessful. Check logs !".format(pkg))
+
         self.info_tick.emit("Tasks Completed successfully !")
         return
 

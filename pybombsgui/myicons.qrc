@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="noprefix">
+    <file>images/about_logo.png</file>
     <file>images/logo.png</file>
     <file>images/protip.png</file>
     <file>images/loading.png</file>

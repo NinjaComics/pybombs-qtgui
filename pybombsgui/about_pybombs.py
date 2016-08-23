@@ -14,6 +14,7 @@ class AboutPybombsDialog(QDialog, Ui_AboutPybombsDialog):
         self.aboutpybombs_dialogui.pushButton_2.hide()
         self.aboutpybombs_dialogui.pushButton.clicked.connect(self.credits_show)
         self.aboutpybombs_dialogui.pushButton_2.clicked.connect(self.credits_hide)
+        self.aboutpybombs_dialogui.pushButton_3.clicked.connect(self.about_close)
 
     def credits_show(self):
         self.aboutpybombs_dialogui.textEdit.show()
@@ -22,3 +23,6 @@ class AboutPybombsDialog(QDialog, Ui_AboutPybombsDialog):
     def credits_hide(self):
         self.aboutpybombs_dialogui.textEdit.hide()
         self.aboutpybombs_dialogui.pushButton_2.hide()
+
+    def about_close(self):
+        self.close()

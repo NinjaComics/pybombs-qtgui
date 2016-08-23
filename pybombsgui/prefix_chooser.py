@@ -15,7 +15,21 @@ class PrefixChooserDialog(QDialog, Ui_PrefixChooserDialog):
         self.prefixchooser_dialogui.setupUi(self)
 
         self.cfg = config_manager.config_manager
+        self.prefix_info()
 
+        self.prefixchooser_dialogui.pushButton.clicked.connect(self.change_prefix)
+
+    def change_prefix(self):
+        current_prefix = self.prefixchooser_dialogui.comboBox.currentText()
+        cfg_data = {'config': {'default_prefix': current_prefix}}
+        cfg_file = self.cfg.local_cfg
+        self.cfg.update_cfg_file(cfg_data, cfg_file)
+        self.prefix_info()
+        if self.prefixchooser_dialogui.checkBox.isChecked():
+            self._write_env_file(prefix_path)
+        self.close()
+
+    def prefix_info(self):
         default_prefix = self.cfg.get('default_prefix')
         self.prefixchooser_dialogui.label_3.setText(default_prefix)
         self.prefixchooser_dialogui.comboBox.addItem(default_prefix)
@@ -27,20 +41,6 @@ class PrefixChooserDialog(QDialog, Ui_PrefixChooserDialog):
 
         for prefix in prefix_list:
             self.prefixchooser_dialogui.comboBox.addItem(prefix)
-
-        self.prefixchooser_dialogui.pushButton.clicked.connect(self.change_prefix)
-
-    def change_prefix(self):
-        current_prefix = self.prefixchooser_dialogui.comboBox.currentText()
-        cfg_data = {'config': {'default_prefix': current_prefix}}
-        cfg_file = self.cfg.local_cfg
-        self.cfg.update_cfg_file(cfg_data, cfg_file)
-        new_current_prefix = self.cfg.get_active_prefix()
-        prefix_path = new_current_prefix.prefix_dir
-        new_prefix = self.cfg.get('default_prefix')
-        self.prefixchooser_dialogui.label_3.setText(new_prefix)
-        if self.prefixchooser_dialogui.checkBox.isChecked():
-            self._write_env_file(prefix_path)
 
     def _write_env_file(self, path):
         prefix_recipe = recipe.get_recipe('default_prefix', target='prefix',

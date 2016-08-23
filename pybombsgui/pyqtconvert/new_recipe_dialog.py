@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/new_recipe.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ class Ui_NewRecipeDialog(object):
         NewRecipeDialog.setObjectName("NewRecipeDialog")
         NewRecipeDialog.resize(500, 480)
         self.plainTextEdit = QtWidgets.QPlainTextEdit(NewRecipeDialog)
-        self.plainTextEdit.setGeometry(QtCore.QRect(0, 41, 500, 371))
+        self.plainTextEdit.setGeometry(QtCore.QRect(0, 41, 500, 365))
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.pushButton = QtWidgets.QPushButton(NewRecipeDialog)
         self.pushButton.setGeometry(QtCore.QRect(530, 410, 101, 41))
@@ -27,12 +27,16 @@ class Ui_NewRecipeDialog(object):
         self.label_4.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(52, 101, 164);")
         self.label_4.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.lineEdit = QtWidgets.QLineEdit(NewRecipeDialog)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 430, 361, 41))
+        self.lineEdit.setGeometry(QtCore.QRect(10, 425, 350, 41))
         self.lineEdit.setObjectName("lineEdit")
         self.pushButton_2 = QtWidgets.QPushButton(NewRecipeDialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(380, 430, 101, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(370, 425, 120, 41))
+        icon = QtGui.QIcon.fromTheme("document-save")
+        self.pushButton_2.setIcon(icon)
+        self.pushButton_2.setDefault(True)
         self.pushButton_2.setObjectName("pushButton_2")
 
         self.retranslateUi(NewRecipeDialog)

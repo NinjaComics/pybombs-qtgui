@@ -122,6 +122,7 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
                 return alias
             elif ret == QMessageBox.No:
                 self.prefixconfig_dialogui.lineEdit.clear()
+                self.prefixconfig_dialogui.lineEdit_2.clear()
                 return False
         else:
             return alias

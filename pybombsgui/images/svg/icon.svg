@@ -81,8 +81,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="424.21743"
-     inkscape:cy="497.74068"
+     inkscape:cx="239.21743"
+     inkscape:cy="417.74068"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -99,7 +99,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -120,54 +120,60 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc"
        id="path6998-9"
-       d="m 274.62085,510.70287 c -4.02749,0 -7.2699,3.21167 -7.2699,7.20105 l 0,154.82274 0,4.80071 c 0,3.98938 3.24241,7.20103 7.2699,7.20104 l 227.82777,0 c 4.02748,0 7.2699,-3.21168 7.2699,-7.20104 l 0,-159.62345 c 0,-3.98938 -3.24242,-7.20105 -7.2699,-7.20105 l -227.82777,0 z"
+       d="m 266.26597,632.20124 c -1.25845,0 -2.2716,1.00107 -2.2716,2.24457 l 0,48.25832 0,1.49639 c 0,1.24348 1.01315,2.24456 2.2716,2.24456 l 71.18865,0 c 1.25846,0 2.27159,-1.00109 2.27159,-2.24456 l 0,-49.75471 c 0,-1.2435 -1.01313,-2.24457 -2.27159,-2.24457 l -71.18865,0 z"
        style="display:inline;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccc"
        id="rect6024"
-       d="m 294.49702,471.20538 c -3.94883,0 -5.97372,2.65275 -7.12802,5.11195 l -17.26191,36.31642 c -0.39683,0.62991 -0.4629,1.31909 -0.55655,1.99686 l 237.6247,0 -0.55694,-1.99686 -17.26213,-36.92878 c -1.15187,-2.45984 -3.1793,-4.49959 -7.12778,-4.49959 l -187.73137,0 z"
+       d="m 272.47662,619.88984 c -1.23387,0 -1.86659,0.82686 -2.22727,1.5934 l -5.39378,11.31984 c -0.12398,0.19635 -0.14464,0.41117 -0.17389,0.62243 l 74.24986,0 -0.17404,-0.62243 -5.39383,-11.51071 c -0.35993,-0.76673 -0.99344,-1.40253 -2.22721,-1.40253 l -58.65984,0 z"
        style="opacity:0.86000001;fill:#aa4400;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:connector-curvature="0"
        id="rect6987-3"
        d="m 268.5953,516.30802 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
        style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7156)"
-       transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+       transform="matrix(0.30052321,0,0,0.31174626,183.61313,472.99516)"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        style="fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7290)"
        d="m 297.11345,492.90783 -0.6751,2.10838 179.1233,0 -0.6444,-2.10838 -177.8038,0 z"
        id="path7058"
        inkscape:connector-curvature="0"
-       transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+       transform="matrix(0.30052321,0,0,0.31174626,183.61313,472.99516)"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc"
        inkscape:r_cy="true"
        inkscape:r_cx="true"
        id="path4748-5"
-       d="m 509.68671,514.58814 -109.13918,-38.95076 -1.87367,-44.36066 86.73969,38.70156 c 3.22862,1.81825 6.76871,4.35785 8.81582,7.46238 l 15.45734,37.14748 z"
+       d="m 339.71628,633.41227 -34.10238,-12.14096 -0.58546,-13.82726 27.10328,12.06331 c 1.00884,0.56675 2.115,1.35834 2.75465,2.32603 l 4.82991,11.57888 z"
        style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient5755);stroke-width:6.70513344;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.55210578;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-       d="m 512.16693,513.60418 -109.13955,-38.95076 -1.87354,-44.36066 86.73967,38.70154 c 3.22902,1.81827 6.76908,4.35788 8.81583,7.46239 l 15.45759,37.14749 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12999998;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.1723031;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       d="m 340.49128,633.10557 -34.10251,-12.14097 -0.58542,-13.82724 27.10328,12.06329 c 1.00896,0.56676 2.11511,1.35835 2.75466,2.32603 l 4.82999,11.57889 z"
        id="path9116-6"
        inkscape:r_cx="true"
        inkscape:r_cy="true"
        sodipodi:nodetypes="cccccc"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:export-ydpi="89.900002"
        inkscape:export-xdpi="89.900002"
@@ -176,62 +182,69 @@
        inkscape:r_cy="true"
        inkscape:r_cx="true"
        id="path5814"
-       d="m 387.03499,506.61427 -119.94165,7.32768 15.71269,-40.70959 c 4.18859,-6.44762 11.70395,-9.01657 21.47453,-8.9561 l 86.68261,-4.07097 -3.92818,46.40898 z"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none" />
+       d="m 301.39168,630.92681 -37.4778,2.28404 4.90969,-12.6892 c 1.3088,-2.00973 3.6571,-2.81047 6.71009,-2.79161 l 27.08544,-1.26892 -1.22742,14.46569 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ff6905;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:export-ydpi="89.900002"
        inkscape:export-xdpi="89.900002"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.53278202;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
-       d="m 387.03499,508.02857 -119.94165,7.32767 15.71269,-40.70959 c 4.18859,-6.44761 11.70395,-9.01658 21.47453,-8.95611 l 86.68261,-4.07098 -3.92818,46.40901 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16627246;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;marker:none;marker-start:none;marker-mid:none;marker-end:none"
+       d="m 301.39168,631.36765 -37.4778,2.28405 4.90969,-12.6892 c 1.3088,-2.00974 3.6571,-2.81048 6.71009,-2.79163 l 27.08544,-1.26893 -1.22742,14.46571 z"
        id="path5816"
        inkscape:r_cx="true"
        inkscape:r_cy="true"
        sodipodi:nodetypes="cccccc"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
        d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
        id="path7160"
        inkscape:connector-curvature="0"
-       transform="matrix(0.96177608,0,0,1.0001468,10.103736,-0.06331398)"
+       transform="matrix(0.30052321,0,0,0.31174626,183.61313,472.99516)"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:connector-curvature="0"
        id="path7210"
        d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
        style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
-       transform="matrix(0,-0.64758829,1.2734146,0,-360.99124,855.65938)"
+       transform="matrix(0,-0.2018536,0.39789993,0,67.65823,739.72435)"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
-       transform="matrix(0,-0.64758829,1.2734146,0,-596.94304,855.65938)"
+       transform="matrix(0,-0.2018536,0.39789993,0,-6.0689013,739.72435)"
        style="opacity:0.95;fill:#ffd5d5;fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter7206)"
        d="m 268.5953,679.90788 -0.9573,2.10838 254,0 -0.91377,-2.10838 -252.12893,0 z"
        id="path7212"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <ellipse
        style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.9374786;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4179"
-       cx="392.46875"
-       cy="597.54095"
+       cx="301.71478"
+       cy="660.53674"
        inkscape:export-xdpi="89.900002"
        inkscape:export-ydpi="89.900002"
-       rx="60"
-       ry="61.069904" />
+       rx="15.623344"
+       ry="15.967208"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
        inkscape:connector-curvature="0"
        id="path4193"
-       d="m 399.88999,624.30133 0.77291,24.16742 -5.11725,-9.21925 -5.05499,10.17611 -0.80367,-25.13288 10.203,0.009 z"
-       style="opacity:1;fill:#c8b7b7;fill-opacity:1;stroke:#e06e2f;stroke-width:14.81802559;stroke-miterlimit:4;stroke-dasharray:59.27209346, 14.81802337;stroke-dashoffset:0;stroke-opacity:0"
+       d="m 303.6472,667.53348 0.20125,6.31877 -1.33248,-2.41045 -1.31625,2.66063 -0.20927,-6.57119 2.65675,0.002 z"
+       style="opacity:1;fill:#c8b7b7;fill-opacity:1;stroke:#e06e2f;stroke-width:3.86636305;stroke-miterlimit:4;stroke-dasharray:15.46544929, 3.86636233;stroke-dashoffset:0;stroke-opacity:0"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <path
-       transform="matrix(-4.4732177,-0.79488603,0.48699018,-5.3472982,585.92373,716.54903)"
-       inkscape:transform-center-y="-0.63521651"
-       inkscape:transform-center-x="-0.900789"
+       transform="matrix(-1.1647771,-0.20782923,0.12680693,-1.3980934,352.08835,691.65238)"
+       inkscape:transform-center-y="-0.16607637"
+       inkscape:transform-center-x="-0.23454681"
        d="M 49.497475,20.953164 41.430869,22.1564 37.793805,14.856421 43.612582,9.1415508 50.845848,12.909545 Z"
        inkscape:randomized="0"
        inkscape:rounded="0"
@@ -247,27 +260,30 @@
        style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:#e06e2f;stroke-width:9.80000019;stroke-miterlimit:4;stroke-dasharray:39.2, 9.8;stroke-dashoffset:0;stroke-opacity:0"
        sodipodi:type="star"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <ellipse
-       ry="6.5838633"
-       rx="6.2732821"
-       transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
-       cy="602.5575"
-       cx="-387.69193"
+       ry="1.721396"
+       rx="1.6334941"
+       transform="matrix(-0.99999964,-8.459161e-4,0.03183166,0.99949324,0,0)"
+       cy="661.94812"
+       cx="-284.41492"
        id="ellipse4197"
-       style="opacity:0.603;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
+       style="opacity:0.603;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:5.63463974;stroke-miterlimit:4;stroke-dasharray:22.53856007, 5.63464003;stroke-dashoffset:0;stroke-opacity:0"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
     <ellipse
-       ry="6.5838633"
-       rx="6.2732821"
-       transform="matrix(-0.99999965,-8.4245957e-4,0.0319622,0.99948908,0,0)"
-       style="opacity:0.6;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:21.59507942;stroke-miterlimit:4;stroke-dasharray:86.3803175, 21.59507938;stroke-dashoffset:0;stroke-opacity:0"
+       ry="1.721396"
+       rx="1.6334941"
+       transform="matrix(-0.99999964,-8.459161e-4,0.03183166,0.99949324,0,0)"
+       style="opacity:0.6;fill:#241c1c;fill-opacity:1;stroke:#e06e2f;stroke-width:5.63463974;stroke-miterlimit:4;stroke-dasharray:22.53856007, 5.63464003;stroke-dashoffset:0;stroke-opacity:0"
        id="ellipse4199"
-       cx="-361.43091"
-       cy="602.45721"
+       cx="-277.57687"
+       cy="661.92188"
        inkscape:export-xdpi="89.900002"
-       inkscape:export-ydpi="89.900002" />
+       inkscape:export-ydpi="89.900002"
+       inkscape:export-filename="/home/ravi/sandbox/pybombs-qtgui/pybombsgui/images/logo.png" />
   </g>
   <g
      inkscape:groupmode="layer"
