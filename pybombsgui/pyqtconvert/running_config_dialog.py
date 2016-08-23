@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_RunningConfigDialog(object):
     def setupUi(self, RunningConfigDialog):
         RunningConfigDialog.setObjectName("RunningConfigDialog")
-        RunningConfigDialog.resize(640, 480)
+        RunningConfigDialog.resize(658, 480)
         RunningConfigDialog.setFocusPolicy(QtCore.Qt.TabFocus)
         self.verticalLayout = QtWidgets.QVBoxLayout(RunningConfigDialog)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -20,29 +20,7 @@ class Ui_RunningConfigDialog(object):
         self.tabWidget.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.tabWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tabWidget.setAutoFillBackground(False)
-        self.tabWidget.setStyleSheet("QTabBar::tab{\n"
-"  min-width: 10ex;\n"
-"  padding: 2px;\n"
-"  margin-right: 20px;\n"
-"  margin-left: 10px;\n"
-"  padding-right: 20px;\n"
-"  padding-left: 20px;\n"
-"  padding-top: -4px;\n"
-"  focus{border:none;}\n"
-"}\n"
-"QTabBar::tab:selected {\n"
-"  border-bottom : 2.3px solid;\n"
-"  border-bottom-color: rgb(69, 140, 214);\n"
-"}\n"
-"\n"
-"QTabBar::tab:!selected {\n"
-"  border-bottom: 2.3px solid; /* make non-selected tabs look smaller */\n"
-"  border-bottom-color: rgb(135, 135, 134);   \n"
-"}\n"
-"\n"
-"QTabBar:tab:focus {\n"
-"  outline: none;\n"
-"}")
+        self.tabWidget.setStyleSheet("")
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")

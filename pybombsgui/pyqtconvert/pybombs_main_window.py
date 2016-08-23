@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/pybombs_main.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -18,21 +18,13 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/noprefix/images/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.widget_5 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_5.setObjectName("widget_5")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget_5)
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.label_4 = QtWidgets.QLabel(self.widget_5)
-        self.label_4.setText("")
-        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_4.setObjectName("label_4")
-        self.verticalLayout_6.addWidget(self.label_4)
-        self.verticalLayout.addWidget(self.widget_5)
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
@@ -183,10 +175,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.widget_3)
         self.widget_3.raise_()
         self.tabWidget.raise_()
-        self.widget_5.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 652, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 652, 22))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -216,9 +207,6 @@ class Ui_MainWindow(object):
         self.action_Refresh = QtWidgets.QAction(MainWindow)
         self.action_Refresh.setIconVisibleInMenu(False)
         self.action_Refresh.setObjectName("action_Refresh")
-        self.action_Search = QtWidgets.QAction(MainWindow)
-        self.action_Search.setIconVisibleInMenu(False)
-        self.action_Search.setObjectName("action_Search")
         self.action_Preferences = QtWidgets.QAction(MainWindow)
         self.action_Preferences.setIconVisibleInMenu(False)
         self.action_Preferences.setObjectName("action_Preferences")
@@ -247,7 +235,6 @@ class Ui_MainWindow(object):
         self.menuActions.addAction(self.action_Discard_Changes)
         self.menuActions.addAction(self.action_Refresh)
         self.menuActions.addSeparator()
-        self.menuActions.addAction(self.action_Search)
         self.menuActions.addAction(self.action_Choose_Prefix)
         self.menuHelp.addAction(self.action_About_PyBOMBS)
         self.menuHelp.addAction(self.action_About_GNU_Radio)
@@ -265,7 +252,6 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.action_Prefix_Manager)
         self.toolBar.addAction(self.action_Recipe_Manager)
         self.toolBar.addSeparator()
-        self.toolBar.addAction(self.action_Search)
         self.toolBar.addSeparator()
 
         self.retranslateUi(MainWindow)
@@ -305,8 +291,6 @@ class Ui_MainWindow(object):
         self.action_About_CGRAN.setText(_translate("MainWindow", "&About CGRAN"))
         self.action_Apply.setText(_translate("MainWindow", "&Apply Changes"))
         self.action_Refresh.setText(_translate("MainWindow", "&Refresh List"))
-        self.action_Search.setText(_translate("MainWindow", "&Search"))
-        self.action_Search.setShortcut(_translate("MainWindow", "Ctrl+F"))
         self.action_Preferences.setText(_translate("MainWindow", "&Prefix Manager"))
         self.action_RunningConfig.setText(_translate("MainWindow", "&Running Config"))
         self.action_About_PyBOMBS.setText(_translate("MainWindow", "&About PyBOMBS"))

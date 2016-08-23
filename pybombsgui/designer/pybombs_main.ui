@@ -22,6 +22,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../myicons.qrc">
+    <normaloff>:/noprefix/images/logo.png</normaloff>:/noprefix/images/logo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -366,7 +370,7 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -389,7 +393,6 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
     <addaction name="action_Discard_Changes"/>
     <addaction name="action_Refresh"/>
     <addaction name="separator"/>
-    <addaction name="action_Search"/>
     <addaction name="action_Choose_Prefix"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -397,9 +400,7 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
      <string>Help</string>
     </property>
     <addaction name="action_About_PyBOMBS"/>
-    <addaction name="action_About_GNU_Radio"/>
     <addaction name="separator"/>
-    <addaction name="action_About_CGRAN"/>
     <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
@@ -431,7 +432,6 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
    <addaction name="action_Prefix_Manager"/>
    <addaction name="action_Recipe_Manager"/>
    <addaction name="separator"/>
-   <addaction name="action_Search"/>
    <addaction name="separator"/>
   </widget>
   <action name="action_About_GNU_Radio">
@@ -461,17 +461,6 @@ QTableWidget::item {border: 0px; padding-left: 10px;&quot; \
   <action name="action_Refresh">
    <property name="text">
     <string>&amp;Refresh List</string>
-   </property>
-   <property name="iconVisibleInMenu">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="action_Search">
-   <property name="text">
-    <string>&amp;Search</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+F</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>

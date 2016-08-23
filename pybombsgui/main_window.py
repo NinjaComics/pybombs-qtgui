@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import sys
 
 # PyQt API imports
@@ -7,7 +8,7 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QTableWidgetItem,\
      QDialog
 from PyQt5.QtCore import Qt, QThread
-from PyQt5.QtGui import QCursor
+from PyQt5.QtGui import QCursor, QIcon
 
 # Pybombs API imports
 from pybombs import config_manager, package_manager, recipe_manager, recipe, \
@@ -77,7 +78,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.action_About_PyBOMBS.triggered.connect(self.about_pybombs_popup)
         self.ui.action_Prefix_Manager.triggered.connect(self.prefix_config_popup)
 
-        self.ui.action_Search.triggered.connect(self.search_box_popup)
         self.ui.action_RunningConfig.triggered.connect(self.running_config_popup)
         self.ui.action_Recipe_Manager.triggered.connect(self.recipe_manager_popup)
         self.ui.action_Apply.triggered.connect(self.apply_changes)
@@ -90,11 +90,11 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.ui.tableWidget.customContextMenuRequested.connect(
             self.context_menu_apps)
 
-        #tableWidget_2's ContextMenu
-        #self.ui.tableWidget_2.customContextMenuRequested.connect(
-        #    self.context_menu_baseline)
-
         #tableWidget_3's ContextMenu
+        self.ui.tableWidget_3.customContextMenuRequested.connect(
+            self.context_menu_baseline)
+
+        #tableWidget_2's ContextMenu
         #self.ui.tableWidget_3.customContextMenuRequested.connect(
         #    self.context_menu_sdk)
 
@@ -171,11 +171,6 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         self.recipe_conf = RecipeConfigDialog()
         self.recipe_conf.setWindowTitle("Pybombs Recipe Manager")
         self.recipe_conf.show()
-
-    def search_box_popup(self):
-        self.search_box = SearchDialog()
-        self.search_box.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.Popup)
-        self.search_box.show()
 
     def prefix_chooser_popup(self):
         self.ui.statusbar.clearMessage()
@@ -277,6 +272,76 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
         if action == module_info:
             self.module_info_popup(package_name)
 
+    def context_menu_baseline(self):
+        """Custom ContextMenu that helps us install/update/remove OOT Modules
+           from the list displayed on tableWidget
+        """
+        pm = package_manager.PackageManager()
+        #Following three lines will return the package name irrespective of where
+        #mouse click event happens on the row associated with the package
+        indexes = self.ui.tableWidget_3.selectionModel().selectedRows()
+        for index in indexes:
+            package_name = self.ui.tableWidget_3.model().index(index.row(), 0).data()
+        #Our custom context menu
+        menu = QMenu(self)
+        install = menu.addAction("&Mark Install")
+        update = menu.addAction("&Mark Update")
+        remove = menu.addAction("&Mark Remove")
+        discard = menu.addAction("&Discard Changes")
+        menu.addSeparator()
+        module_info = menu.addAction("&Module Info")
+
+        discard.setEnabled(False)
+
+        if pm.installed(package_name):
+            install.setEnabled(False)
+        else:
+            update.setEnabled(False)
+            remove.setEnabled(False)
+
+        if package_name in self.install_material:
+            install.setEnabled(False)
+            discard.setEnabled(True)
+
+        if package_name in self.update_material:
+            update.setEnabled(False)
+            discard.setEnabled(True)
+
+        if package_name in self.remove_material:
+            remove.setEnabled(False)
+            discard.setEnabled(True)
+
+        action = menu.exec_(QCursor.pos())
+
+        #Here's where our context menu gets some work to do
+        if action == install:
+            self.install_material.append(package_name)
+
+        if action == update:
+            self.update_material.append(package_name)
+
+        if action == remove:
+            self.remove_material.append(package_name)
+
+        if action == discard:
+            if package_name in self.install_material:
+                self.install_material.remove(package_name)
+
+            if package_name in self.update_material:
+                self.update_material.remove(package_name)
+
+            if package_name in self.remove_material:
+                self.remove_material.remove(package_name)
+
+        if (self.install_material or self.update_material or self.remove_material):
+            self.ui.action_Apply.setEnabled(True)
+        else:
+            self.ui.action_Apply.setEnabled(False)
+
+        if action == module_info:
+            self.module_info_popup(package_name)
+
+
     def apply_changes(self):
         self.ui.label_3.setText('Preparing packages')
         self.ui.widget_3.show()
@@ -321,12 +386,23 @@ class PybombsMainWindow(QMainWindow, Ui_MainWindow):
             self.ui.label_3.setText('Removing {} of {} completed'.format(pkg_idx, total))
         self.ui.progressBar.setValue(progress)
 
+def pybombs_path():
+    cfg = config_manager.config_manager
+    pybombs_path = os.path.join(cfg.get_pybombs_dir(), 'uilock')
+    return pybombs_path
+
+def myExitHandler():
+    ui_lock = pybombs_path()
+    os.remove(ui_lock)
+
 def main():
     app = QApplication(sys.argv)
+    app.aboutToQuit.connect(myExitHandler)
     bombs = PybombsMainWindow()
     bombs.setWindowTitle("PyBOMBS App Store")
     bombs.showMaximized()
-    #bombs.setWindowIcon(QIcon(":/images/box.png"))
+    ui_path = pybombs_path()
+    open(ui_path, 'a').close()
     bombs.show()
     app.exec_()
 
