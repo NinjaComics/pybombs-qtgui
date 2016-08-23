@@ -96,11 +96,18 @@ class PrefixConfigDialog(QDialog, Ui_PrefixConfigDialog):
 
         # Update config section
         if len(prefix_recipe.config):
-            self.cfg.update_cfg_file(prefix_recipe.config, self.prefix.cfg_file)
-            self.cfg.load(select_prefix=path)
-            self.prefix = self.cfg.get_active_prefix()
+            if self.prefixconfig_dialogui.checkBox.isChecked():
+                prefix_recipe.config = dict_merge(
+                    {'virtualenv': True}, prefix_recipe.config)
+                self.cfg.update_cfg_file(prefix_recipe.config, self.prefix.cfg_file)
+            else:
+                prefix_recipe.config = dict_merge(
+                    {'virtualenv': False}, prefix_recipe.config)
+                self.cfg.update_cfg_file(prefix_recipe.config, self.prefix.cfg_file)
 
-        self.cfg.update_cfg_file({'prefix_aliases':{prefix_alias: prefix_path}},
+            self.cfg.load(select_prefix=prefix_path)
+            self.prefix = self.cfg.get_active_prefix()
+            self.cfg.update_cfg_file({'prefix_aliases':{prefix_alias: prefix_path}},
                                  self.cfg.local_cfg)
         success_msg = 'Successfully created prefix in {}'.format(prefix_path)
         self.color_strips(success_msg, 'blue')
