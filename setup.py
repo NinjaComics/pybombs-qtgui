@@ -67,14 +67,14 @@ except ImportError:
     exit(1)
 
 from setuptools import setup
-#import qtgui
+import pybombsgui
 
 packages = [
     "pybombsgui",
     "pybombsgui.pyqtconvert",
 ]
 
-package_data = {'resourses': ['pybombsgui/myicons_rc.py'],}
+package_data = {'pybombsgui.pyqtconvert': ['pybombsgui/myicons_rc.py'],}
 
 deps = [
     "pybombs",
